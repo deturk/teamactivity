@@ -1,8 +1,4 @@
 function add() {
-   var result = document.getElementById("userInput").innerHTML;
-   document.getElementById("output"). = result;
+   var result = document.getElementById('userInput').value;
+   document.getElementById('output').innerHTML = result;
 }
-
-// function submit(number) {
-    
-// }
