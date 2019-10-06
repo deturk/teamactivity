@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,30 @@
     <link href="week2.css" type="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-<div>
-    <form action=""><input type="text" id="userInput">
-        <button type="button" onclick="add()">Calculate</button>
-    </form>
-    
-    <div id="output"></div>
-</div>
-    
-<script src="week2.js">
-// function add() {
-//    var result = document.getElementById('userInput').value;
-//    document.getElementById('output').innerHTML = result;
-// }
-</script>
+    <div>
+        <form action="">
+            <input type="text" id="userInput">
+            <button type="button" onclick="add()">Output</button>
+        </form>
+
+        <div id="output"></div>
+    </div>
+
+    <hr>
+
+    <div>
+        <input type="text" id="numInput2">
+        <button type="button" onclick="addUp()">+</button>
+        <input type="text" id="numInput">
+        <button type="button" onclick="provideNum()">Calculate</button>
+        <div id="numOutput"></div>
+        <div id="addOutput"></div>
+    </div>
+
+
+    <script src="week2.js"></script>
 </body>
+
 </html>
