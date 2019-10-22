@@ -1,11 +1,11 @@
 const hikeStyles = document.querySelector(".hikeStyles");
 
-let imagePath = '//byui-cit.github.io/cit261/examples/';
+//let imagePath = '//byui-cit.github.io/cit261/examples/';
 
 
 const hikeList = [{
     name: 'Bechler Falls',
-    imgSrc: 'falls.jpg',
+    imgSrc: '/images/hike1.jpeg',
     imgAlt: 'Image of Bechler Falls',
     distance: '3 miles',
     difficulty: 'Easy',
@@ -13,7 +13,7 @@ const hikeList = [{
     directions: 'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
 }, {
     name: 'Teton Canyon',
-    imgSrc: 'falls.jpg',
+    imgSrc: '/images/hike2.jpeg',
     imgAlt: 'Image of Teton Canyon',
     distance: '5 miles',
     difficulty: 'Moderate',
@@ -21,7 +21,7 @@ const hikeList = [{
     directions: 'Take Highway 33 to Driggs. Turn right into the town and continue through. Follow that road for a few miles then turn right up Teton Canyon. Drive to the end of the road. There is a parking area at the trailhead.'
 }, {
     name: 'Denanda Falls',
-    imgSrc: 'falls.jpg',
+    imgSrc: '/images/hike3.jpeg',
     imgAlt: 'Image of Denanda Falls',
     distance: '12 miles',
     difficulty: 'Moderate',
@@ -37,10 +37,6 @@ function buildHikesNames (hike){
         return item;
    
 }
-// //function to listen to events
-// function display(){
-//     event.target.innerHTML = buildHikeDetailed();
-// }
 
 
 //call only hike names
@@ -67,7 +63,7 @@ function buildHikeHtml(hike) {
     item.innerHTML = `
     <h2>${hike.name}</h2>
     <div>
-    <img src="${imagePath}${hike.imgSrc}" alt= "${hike.imgAlt}">
+    <img src="${hike.imgSrc}" alt= "${hike.imgAlt}">
         <h3>Distance</h3>
         <p>${hike.distance}</p>
     </div>
@@ -82,7 +78,7 @@ function buildHikeHtml(hike) {
 //build hike details
 function buildHikeDetailed(hike){
  const item = document.createElement('li');
-    item.innerHTML = `<img src="${imagePath}${hike.imgSrc}" 
+    item.innerHTML = `<img src="${hike.imgSrc}" 
     alt= "${hike.imgAlt}">
     <h2>${hike.name}</h2>
     <div>
@@ -102,9 +98,7 @@ function buildHikeDetailed(hike){
         <p>${hike.directions}</p>`;
     }
 
-    function getHikeByName(hikeName) {
-        return this.displayNames().find(hike => hike.name === hikeName);
-      }
+   
     //   //show a list of hikes in the parentElement
     //   function showHikeList() {
     //     this.parentElement.innerHTML = '';
@@ -115,27 +109,27 @@ function buildHikeDetailed(hike){
     //     this.backButton.classList.add('hidden');
     //   }
 
-function  showOneHike(hikeName) {
-    const hike = this.getHikeByName(hikeName);
-    this.parentElement.innerHTML = '';
-    this.parentElement.appendChild(renderOneHikeFull(hike));
-    // show the back button
-    this.backButton.classList.remove('hidden');
-  }
+// function  showOneHike(hikeName) {
+//     const hike = this.getHikeByName(hikeName);
+//     this.parentElement.innerHTML = '';
+//     this.parentElement.appendChild(renderOneHikeFull(hike));
+//     // show the back button
+//     this.backButton.classList.remove('hidden');
+//   }
 
-function addHikeListener() {
-        // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
-        const childrenArray = Array.from(this.parentElement.children);
-        childrenArray.forEach(child => {
-          child.addEventListener('touchend', e => {
-            // why currentTarget instead of target?
-            this.showOneHike(e.currentTarget.dataset.name);
-          });
-        });
-      }
+// function addHikeListener() {
+//         // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
+//         const childrenArray = Array.from(this.parentElement.children);
+//         childrenArray.forEach(child => {
+//           child.addEventListener('touchend', e => {
+//             // why currentTarget instead of target?
+//             this.showOneHike(e.currentTarget.dataset.name);
+//           });
+//         });
+//       }
  
 
 
 
-window.addEventListener('load', getHikeByName);
+window.addEventListener('load', buildHikeDetailed);
 // hikeStyles.addEventListener('touchend', buildHikeHtml); 
