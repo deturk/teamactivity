@@ -1,11 +1,14 @@
 const hikeStyles = document.querySelector(".hikeStyles");
+const hikeListElement = document.getElementById('hikes');
+const item = document.createElement('li');
 
-//let imagePath = '//byui-cit.github.io/cit261/examples/';
+
+let imagePath = 'http://byui-cit.github.io/cit261/examples/';
 
 
 const hikeList = [{
     name: 'Bechler Falls',
-    imgSrc: '/images/hike1.jpeg',
+    imgSrc: 'fall.jpg',
     imgAlt: 'Image of Bechler Falls',
     distance: '3 miles',
     difficulty: 'Easy',
@@ -13,7 +16,7 @@ const hikeList = [{
     directions: 'Take Highway 20 north to Ashton. Turn right into the town and continue through. Follow that road for a few miles then turn left again onto the Cave Falls road. Drive to the end of the Cave Falls road. There is a parking area at the trailhead.'
 }, {
     name: 'Teton Canyon',
-    imgSrc: '/images/hike2.jpeg',
+    imgSrc: 'fall.jpg',
     imgAlt: 'Image of Teton Canyon',
     distance: '5 miles',
     difficulty: 'Moderate',
@@ -21,7 +24,7 @@ const hikeList = [{
     directions: 'Take Highway 33 to Driggs. Turn right into the town and continue through. Follow that road for a few miles then turn right up Teton Canyon. Drive to the end of the road. There is a parking area at the trailhead.'
 }, {
     name: 'Denanda Falls',
-    imgSrc: '/images/hike3.jpeg',
+    imgSrc: 'fall.jpg',
     imgAlt: 'Image of Denanda Falls',
     distance: '12 miles',
     difficulty: 'Moderate',
@@ -41,21 +44,34 @@ function buildHikesNames (hike){
 
 //call only hike names
 function displayNames(){
-    const hikeListElement = document.getElementById('hikes');
     hikeList.forEach(hike => {
         hikeListElement.appendChild(buildHikesNames(hike));
     })
 }
 
-
-//get the array of hikes
+hikeStyles.addEventListener("touchend", e =>{
+    e.preventDefault();
+   // console.log(e);
+    hikeList.find(hike =>{
+        if(e.target.innerHTML === hike.name){
+            console.log('I was clicked');
+            buildHikeDetailed(hike);
+        };
+        
+        // }else{
+        //     console.log('error');
+        // }
+    });
+    
+});
+//get the list of hikes and show them
 function displayHikeList() {
-    const hikeListElement = document.getElementById('hikes');
-    hikeListElement.innerHTML = '';
-    hikeList.forEach(hike => {
-        hikeListElement.appendChild(buildHikeHtml(hike));
-    })
-}
+    let hikes = hikeListElement.getElementsByTagName("li");
+    console.log(hikes);
+    // const hikeList = Array.from(hikes);
+    // console.log(hikeList);
+    };
+
 
 //build the html to show hikes
 function buildHikeHtml(hike) {
@@ -63,7 +79,7 @@ function buildHikeHtml(hike) {
     item.innerHTML = `
     <h2>${hike.name}</h2>
     <div>
-    <img src="${hike.imgSrc}" alt= "${hike.imgAlt}">
+    <img src="${imagePath}${hike.imgSrc}" alt= "${hike.imgAlt}">
         <h3>Distance</h3>
         <p>${hike.distance}</p>
     </div>
@@ -78,7 +94,7 @@ function buildHikeHtml(hike) {
 //build hike details
 function buildHikeDetailed(hike){
  const item = document.createElement('li');
-    item.innerHTML = `<img src="${hike.imgSrc}" 
+    item.innerHTML = `<img src="${imagePath}${hike.imgSrc}" 
     alt= "${hike.imgAlt}">
     <h2>${hike.name}</h2>
     <div>
@@ -98,6 +114,14 @@ function buildHikeDetailed(hike){
         <p>${hike.directions}</p>`;
     }
 
+    //do something to test the oneHike function
+    function doSomething(){
+        console.log('I was clicked');
+    }
+    //grab the list element that is clicked and do something with it
+    // function oneHike(){
+    //     hikeStyles.addEventListener('touchend', doSomething);
+    // }
    
     //   //show a list of hikes in the parentElement
     //   function showHikeList() {
@@ -109,13 +133,6 @@ function buildHikeDetailed(hike){
     //     this.backButton.classList.add('hidden');
     //   }
 
-// function  showOneHike(hikeName) {
-//     const hike = this.getHikeByName(hikeName);
-//     this.parentElement.innerHTML = '';
-//     this.parentElement.appendChild(renderOneHikeFull(hike));
-//     // show the back button
-//     this.backButton.classList.remove('hidden');
-//   }
 
 // function addHikeListener() {
 //         // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
@@ -131,5 +148,5 @@ function buildHikeDetailed(hike){
 
 
 
-window.addEventListener('load', buildHikeDetailed);
+window.addEventListener('load', displayNames);
 // hikeStyles.addEventListener('touchend', buildHikeHtml); 
