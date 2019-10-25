@@ -10,7 +10,9 @@ const signup = document.querySelector('#sign-up-btn');
     const rptpassword = document.getElementById('repeat-pass').value;
 
     console.log(firstname, lastname, email, password, rptpassword);
-    
+    auth.createUserWithEmailAndPassword(email, password).then( credentials =>{
+        console.log(credentials);
+    });
 });
 
 const signin = document.querySelector('#sign-in-btn');
@@ -20,7 +22,11 @@ const signin = document.querySelector('#sign-in-btn');
     const username = document.getElementById('user').value;
     const password = document.getElementById('pass').value;
 
-    console.log(username,password);
+    //console.log(username,password);
+    auth.createUserWithEmailAndPassword(username, password).then( credentials =>{
+        console.log(credentials);
+    });
+    
 })
 
 
