@@ -1,0 +1,35 @@
+SEAK CRM
+By SEAK Systems
+Description: The web app is to provide a simple customer management application to help businesses maintain better relationship with clients, get an overview of leads, and sales pipeline.
+Design: An introductory homepage that includes purpose of the application and provides options to sign up or login. 
+User Scenarios:
+1.	Sign up: A simple form that accepts first and last name, email address and password.
+a.	Write a JavaScript function which has variables to store user inputs
+b.	Upload user input from JS file to a database hosted by firebase.
+c.	Ask user to sign in with username and password.
+d.	Authenticate credentials and allow or deny entry to the database.
+2.	Sign up:
+a.	Provide a form that accepts username and password
+b.	Authenticate username and password
+c.	Allow entry or deny user by throwing an error
+Application Interface:
+1.	Menu
+2.	Contacts lists
+3.	Lists of FAQs from a drop-down menu
+4.	Other options (a text form)
+5.	Chart- graphic representation of data
+a.	Most busy days
+6.	Query interface
+a.	Most purchased item
+b.	Mode of transaction
+7.	Log out tab
+8.	Feedback
+9.	Map generated form IP address of users.
+Project Timeline: 7 weeks (week 6 -13)
+1.	Week 6 complete sign in pages
+2.	Week 7 complete sign up pages
+3.	Week 8 connect to firebase database
+4.	Complete menu items
+5.	Complete FAQs lists
+6.	Complete query interface
+7.	Complete maps
