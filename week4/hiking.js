@@ -140,7 +140,21 @@ const hikeList = [
               <h3>How to get there</h3>
               <p>${hike.directions}</p>
           </div>
+          <div>
+              <h3>Add Comments</h3>
+              <p>${hike.comments}</p>
+          </div>
       
       `;
     return item;
-  }
+  };
+
+ function newComment(){
+  hikeList.forEach(item =>{
+    for(item in hikeList ){
+     hikeList[item].comments = "comment";
+    }
+  });
+ }
+
+newComment();
