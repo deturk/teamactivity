@@ -24,7 +24,10 @@ longProcess().then(result=>{
 const baseUrl = 'https://pokeapi.co/api/v2/';
 
 function getJson(url){
-    return fetch(baseUrl + url).then(res=>{
+    if(!url){
+        url = baseUrl + 'pokemon';
+    }
+    return fetch(url).then(res=>{
         if(res.ok){
             return res.json();
         }else{
@@ -38,11 +41,35 @@ function getJson(url){
 }
 const myList = document.getElementById('list');
 
-getJson('type/3').then(data =>{
-    console.log(data);
-    const myNewArray = data.pokemon.map(item =>{
-        return `<li>${item.pokemon.name}<li>`;
-    }).join('');
-    // console.log(myNewArray);
-    myList.innerHTML = myNewArray;
-});
+
+
+function beforeNextBtn(page = null){
+
+    getJson(page).then(data =>{
+        console.log(data);
+        const myNewArray = data.results.map(item =>{
+            return `<li>${item.name}</li>`;
+        }).join('');
+        
+       
+        prvbtn.addEventListener('touchend', ()=>{
+            beforeNextBtn(data.previous);
+        });
+
+        
+        nxtbtn.addEventListener('touchend', ()=>{
+            beforeNextBtn(data.next)
+        });
+        // console.log(myNewArray);
+        myList.innerHTML = myNewArray;
+
+    });
+    
+}
+const prvbtn = document.createElement('button');
+      prvbtn.innerText = 'Previous';
+      document.body.appendChild(prvbtn);
+const nxtbtn = document.createElement('button');
+      nxtbtn.innerText = 'Next';
+      document.body.appendChild(nxtbtn);
+beforeNextBtn();
