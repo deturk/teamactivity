@@ -67,9 +67,9 @@ function beforeNextBtn(page = null){
     
 }
 const prvbtn = document.createElement('button');
-      prvbtn.innerText = 'Previous';
+      prvbtn.innerText = '<- Previous';
       document.body.appendChild(prvbtn);
 const nxtbtn = document.createElement('button');
-      nxtbtn.innerText = 'Next';
+      nxtbtn.innerText = 'Next->';
       document.body.appendChild(nxtbtn);
 beforeNextBtn();
