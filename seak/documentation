@@ -1,6 +1,7 @@
 SEAK CRM
 By SEAK Systems
-Description: The web app is to provide a simple customer management application to help businesses maintain better relationship with clients, get an overview of leads, and sales pipeline.
+Description: The web app is to provide a simple customer management application to help businesses maintain better relationship with clients, 
+get an overview of leads, and sales pipeline.
 Design: An introductory homepage that includes purpose of the application and provides options to sign up or login. 
 User Scenarios:
 1.	Sign up: A simple form that accepts first and last name, email address and password.
@@ -14,7 +15,7 @@ b.	Authenticate username and password
 c.	Allow entry or deny user by throwing an error
 Application Interface:
 1.	Menu
-2.	Contacts lists
+2.	Contacts lists - Cutomers
 3.	Lists of FAQs from a drop-down menu
 4.	Other options (a text form)
 5.	Chart- graphic representation of data
