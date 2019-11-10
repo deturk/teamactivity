@@ -73,3 +73,8 @@ const nxtbtn = document.createElement('button');
       nxtbtn.innerText = 'Next->';
       document.body.appendChild(nxtbtn);
 beforeNextBtn();
+
+function getPokemonDetails(){
+    return getJson();
+}
+console.log(getPokemonDetails());
