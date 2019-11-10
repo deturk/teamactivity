@@ -27,6 +27,8 @@ const signin = document.querySelector('#sign-in-btn');
         console.log(credentials);
         document.getElementById('login-form').hidden = true;
         document.getElementById('login-form').hidden = false;
+    
+    location.href = 'main.html';
 
     });
     
