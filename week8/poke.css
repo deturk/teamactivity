@@ -1,0 +1,22 @@
+#list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-items: space-around;
+    width: 100vw;
+}
+
+#list li{
+    border: 1px solid;
+    padding: 0.5em;
+}
+
+main{
+    display: flex;
+
+}
+
+#details{
+    width: 100vw;
+    transform: translate(100vw);
+}

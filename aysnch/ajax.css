@@ -1,0 +1,49 @@
+body{
+    background-image: url('https://cdn.pixabay.com/photo/2016/07/15/16/36/pokemon-1519637_960_720.jpg');
+    background-repeat: no-repeat;
+}
+
+#list{
+    list-style-type: none;
+    color: white;
+}
+
+button{
+    margin: 20px;
+    margin-left: 55px;
+    background-color: limegreen;
+    border-radius: 10px;
+    color: white;
+    
+}
+h1{
+    color: gold;
+}
+
+#list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-items: space-around;
+    /* width: 100vw; */
+    
+}
+
+#list li{
+    border: 1px solid;
+    padding: 0.5em;
+    display: grid;
+    width: 100px;
+    margin: 2px;
+    text-align: center;
+}
+
+main{
+    display: flex;
+
+}
+
+#details{
+    width: 100vw;
+    transform: translate(100vw);
+}
