@@ -30,8 +30,8 @@ const signup = document.querySelector('#sign-up-btn');
         signup.reset();
     });
 });
-function welcomeUser(){
-    alert('welcome!');
+function welcomeUser(credentials){
+    console.log('welcome ' + credentials.user.email);
 }
 
 
@@ -47,12 +47,16 @@ function welcomeUser(){
     auth.signInWithEmailAndPassword(username, password).then( credentials =>{
         //console.log(username,password);
         console.log(credentials.user);
+        
         //hide the login form and reset it
         document.getElementById('login-form').hidden = true;
         document.getElementById('login-form').hidden = false;
     
+   //setTimeout(welcomeUser(), 10000);
+   welcomeUser(credentials);
     location.href = 'main.html';
-    setTimeout(welcomeUser(), 3000);
+    
+    //welcomeUser();
     signin.reset();
 
     });

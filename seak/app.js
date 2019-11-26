@@ -10,7 +10,8 @@ auth.onAuthStateChanged(user =>{
     }else{
         console.log('user logged out');
     }
-})
+});
+
 //get document from the database and render it in the frontend
 // function renderUserInfo(doc){
 //     let li = document.createElement('li');
