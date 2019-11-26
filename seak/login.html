@@ -89,42 +89,41 @@
 </div>
 
 
-<!-- scripts -->
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "AIzaSyB7u6Ms3ERscV5SY0XoxMP8wPJKLqqM7_c",
-    authDomain: "seak-crm.firebaseapp.com",
-    databaseURL: "https://seak-crm.firebaseio.com",
-    projectId: "seak-crm",
-    storageBucket: "seak-crm.appspot.com",
-    messagingSenderId: "1007947074086",
-    appId: "1:1007947074086:web:704b61284691ec550074e7",
-    measurementId: "G-VDX9TV0502"
+    apiKey: "AIzaSyCUtWKBVHH9CmDJ4FhanmTCumE2uzxW2B4",
+    authDomain: "seak-crm-6c8ce.firebaseapp.com",
+    databaseURL: "https://seak-crm-6c8ce.firebaseio.com",
+    projectId: "seak-crm-6c8ce",
+    storageBucket: "seak-crm-6c8ce.appspot.com",
+    messagingSenderId: "706111528068",
+    appId: "1:706111528068:web:6e18fe6a0923634da6b6d1",
+    measurementId: "G-9C8NBPPSKR"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-  //make auth and firebase references
+   //make auth and firebase references
 	const auth = firebase.auth();
 	const dbase = firebase.firestore();
 
-	//update firestore settings
-	// dbase.settings({timestampsInSnapshots: true});
 </script>
 
 <!-- local scripts -->
 <script src="/seak/app.js"></script>
-<script src="/seak/auth.js"></script>
+<script src="/seak/auth.js" ></script>
 </body>
 </html>
