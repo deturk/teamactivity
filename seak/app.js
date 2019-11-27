@@ -1,10 +1,36 @@
-//get data from firestore
-dbase.collection('users').get().then(snapshot =>{
-    console.log(snapshot.docs);
-})
+//get data from the firestore database and render it to the frontend
 
-const userInfo = document.querySelector('#userinfo');
-auth.onAuthStateChanged(user =>{
+
+// dbase.collection('users').get().then(snapshot =>{
+//     snapshot.docs.forEach(doc => {
+//         console.log(doc.data());
+//     });
+// })
+//create element and render account details
+const accountDetails = document.querySelector('#accountDetails');
+
+
+function showUserInfo(doc){
+    let div = document.createElement('div');
+    let firstname = document.createElement('span');
+    let lastname = document.createElement('span');
+    
+
+    div.setAttribute('data-id', doc.id);
+    firstname.textContent = doc.data().firstname;
+    lastname.textContent = doc.data().lastname;
+    
+
+    div.appendChild(firstname);
+    // div.appendChild(lastname);
+
+    accountDetails.appendChild(div);
+   
+}
+
+
+//check user active state
+const activeStatus = auth.onAuthStateChanged(user =>{
     if(user){
         console.log(user.email, 'logged in');
     }else{
@@ -12,28 +38,28 @@ auth.onAuthStateChanged(user =>{
     }
 });
 
-//get document from the database and render it in the frontend
-// function renderUserInfo(doc){
-//     let li = document.createElement('li');
-//     let name = document.createElement('span');
+accountDetails.addEventListener('touchend', (e) =>{
+    e.preventDefault();
     
-//     li.setAttribute('data-id', doc.id);
-//     name.textContent = doc.data().firstname;
+    dbase.collection('users').get().then(snapshot =>{
+         snapshot.docs.find(doc => {
+           // console.log(doc.data());
+            if(activeStatus){
+                showUserInfo(doc);
+            }
+            
+        });
+       
+    });
+    
+});
 
-//     li.appendChild(name);
-
-//     userInfo.appendChild(li);
-// }
-
-// dbase.collection('users').get().then((snapshot) =>{
-//     snapshot.docs.forEach(doc => {
-//         renderUserInfo(doc);
-//     });
-// })
 
 
-// get data from the front end and save it to the database
 
+
+
+//logout alert
 const logout = document.querySelector('#logout');
 logout.addEventListener('touchend', (e)=>{
     e.preventDefault();
@@ -43,6 +69,12 @@ logout.addEventListener('touchend', (e)=>{
     });
 });
 
-// 
+//use data from the database and render it in the frontend
+// const  renderUserInfo = (data) =>{
+//    data.collection('users').get().then(snapshot =>{
+//        snapshot.doc.data();
+//    })
+    
+// }
 
 

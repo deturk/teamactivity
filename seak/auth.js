@@ -9,7 +9,7 @@ auth.onAuthStateChanged(user =>{
     }
 })
 
-//sign up
+//sign up form
 const signup = document.querySelector('#sign-up-btn');
     signup.addEventListener('touchend', (e) => {
     e.preventDefault();
@@ -20,8 +20,16 @@ const signup = document.querySelector('#sign-up-btn');
     const password = document.getElementById('sign-up-pass').value;
     const rptpassword = document.getElementById('repeat-pass').value;
 
-    // create users using the auth function
-    console.log(firstname, lastname, email, password, rptpassword);
+    // grab data from  the form and save to databse
+    dbase.collection('users').add({
+        firstname : firstname,
+        lastname: lastname,
+        email: email
+
+    });
+    //console.log(firstname, lastname, email, password, rptpassword);
+
+    //create user with email and password --automatically log in users
     auth.createUserWithEmailAndPassword(email, password).then( credentials =>{
         console.log(credentials);
         
@@ -30,11 +38,14 @@ const signup = document.querySelector('#sign-up-btn');
         signup.reset();
     });
 });
+
+//welcome the user once authenticated
 function welcomeUser(credentials){
     console.log('welcome ' + credentials.user.email);
 }
 
 
+//sign in form
  const signin = document.querySelector('#sign-in-btn');
 
     signin.addEventListener('touchend', (e) => {
@@ -64,20 +75,10 @@ function welcomeUser(credentials){
     
 })
 
-// get data from the front end and save it to the database
-/*grab the form and add event listerner
-prevent default behavior
-refrence the database collection name and use the add method to add 
-values as objects */
+//get data from the firestore database and render it to the frontend
+// dbase.collection('users').get().then((snapshot) =>{
+//     console.log(snapshot.docs);
+// });
 
 
-//document.getElementsByName('user')[0].placeholder='here i am';
 
-//logout method
-// const logout = document.querySelector('#logout');
-// logout.addEventListener('touchend', (e)=>{
-//     e.preventDefault();
-//     auth.signOut().then(() =>{
-//         console.log('user signed out');
-//     })
-// })
