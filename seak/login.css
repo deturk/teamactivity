@@ -571,3 +571,86 @@ a:hover {
     /*TRANSITION*/
     @include transition(0.5s, background);
 }
+
+@include transition(0.5s, background);
+hover {
+    background: purple * 1.4;
+}
+
+
+/* SUCESS STYLES
+	&.success {
+		overflow: hidden;
+    }
+	.formHeader {
+			background: success;
+			border-color: success / 1.2;
+			font-size: .75em;
+		}
+
+		.formBody {
+			height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+        }
+			.form {
+				/*TRANSITION*/
+
+
+/*
+                @include transition(0.5s, opacity);
+
+				opacity: 0;
+			}
+		
+	
+	.inputContainer.success {
+		border-color: lightSuccess / 1.1;
+    }
+		after {
+			font: 1.25em/2em FontAwesome;
+			color: lightSuccess;
+			position: absolute;
+			top: 0;
+			right: 10px;
+			content: "\f00c";
+		}
+
+		.label {
+			background: lightSuccess;
+			border-color: lightSuccess / 1.1;
+		}
+
+		.input,
+		.textarea {
+			color: success;
+		}
+	
+
+	.inputContainer.error {
+		border-color: error / 1.1;
+    }
+		.message {
+			width: 100%;
+		}
+
+		after {
+			font: 1.25em/2em FontAwesome;
+			color: error;
+			position: absolute;
+			top: 0;
+			right: 10px;
+			content: "\f00d";
+		}
+		.label {
+			background: $error;
+			border-color: $error / 1.1;
+		}
+
+		.input,
+		.textarea {
+			color: $error;
+		}
+	}
+}
+ */
