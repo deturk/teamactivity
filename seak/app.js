@@ -43,6 +43,7 @@ logout.addEventListener('touchend', (e) => {
     });
 });
 
+/* This is the JavaScript for the contact us page. */
 // contact form javascript
 (function() {
     "use strict";
@@ -65,6 +66,7 @@ logout.addEventListener('touchend', (e) => {
                 this.formHeader = document.querySelector("#formHeader h1");
                 this.formBody = document.getElementById("formBody");
                 this.inputContainer = document.getElementsByClassName("inputContainer");
+                this.inputContainer = document.getElementsByClassName("inputContainer3");
                 //USER INPUT ELEMENTS
                 //INPUT FIELDS
                 this.fields = {
