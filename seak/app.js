@@ -13,12 +13,28 @@ auth.onAuthStateChanged(user => {
 });
 
 //get document from the database and render it in the frontend
-// function renderUserInfo(doc){
-//     let li = document.createElement('li');
-//     let name = document.createElement('span');
+function renderUserInfo(doc){
+    const item = document.createElement('li');
+    item.classList.add('light');
 
-//     li.setAttribute('data-id', doc.id);
-//     name.textContent = doc.data().firstname;
+
+    item.setAttribute('data-id', doc.id);
+    item.innerHTML = `<h2>${doc.name}</h2>
+    
+    <div>  
+        <div>
+            <h3>username</h3>
+            <p>${doc.username}</p>
+        </div>
+    </div>
+    `
+}
+
+const userAccount = document.querySelector('#accountDetails');
+userAccount.addEventListener('touchend', (e) =>{
+    e.preventDefault();
+    renderUserInfo(doc);
+});
 
 
 
