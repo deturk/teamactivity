@@ -15,7 +15,7 @@ b.	Authenticate username and password
 c.	Allow entry or deny user by throwing an error
 Application Interface:
 1.	Menu
-2.	Cutomers:
+2.	Customers:
 	    Lists of FAQs from a drop-down menu
 3.	    Other options (a text form)
         Feedback

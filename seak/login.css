@@ -203,7 +203,8 @@ a {
 /* main style */
 
 html,
-body {
+
+/* body {
     margin: 0;
     padding: 0;
 }
@@ -216,11 +217,11 @@ body {
 body {
     margin: 0;
     padding: 0;
-    /* make it look decent enough */
+   
     background: #232323;
     color: #cdcdcd;
     font-family: "Avenir Next", "Avenir", sans-serif;
-}
+} */
 
 a {
     text-decoration: none;
@@ -490,6 +491,7 @@ a:hover {
     background: white;
     padding: 20px 12px;
     overflow: hidden;
+    height: 80vh;
     /*TRANSITION*/
     @include transition(0.2s);
 }
@@ -515,7 +517,6 @@ a:hover {
     position: relative;
     margin-bottom: 5px;
     overflow: hidden;
-    height: 600px;
     background: transparent;
 }
 
@@ -544,8 +545,8 @@ a:hover {
     bottom: 0;
 }
 
-.textarea,
-.input {
+textarea,
+input {
     width: 100%;
     max-width: 100%;
 }
@@ -643,13 +644,13 @@ hover {
 			content: "\f00d";
 		}
 		.label {
-			background: $error;
-			border-color: $error / 1.1;
+			background: error;
+			border-color: error / 1.1;
 		}
 
 		.input,
 		.textarea {
-			color: $error;
+			color: error;
 		}
 	}
 }
