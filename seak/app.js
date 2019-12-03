@@ -20,20 +20,12 @@ auth.onAuthStateChanged(user => {
 //     li.setAttribute('data-id', doc.id);
 //     name.textContent = doc.data().firstname;
 
-//     li.appendChild(name);
-
-//     userInfo.appendChild(li);
-// }
-
-// dbase.collection('users').get().then((snapshot) =>{
-//     snapshot.docs.forEach(doc => {
-//         renderUserInfo(doc);
-//     });
-// })
 
 
-// get data from the front end and save it to the database
 
+
+
+//logout alert
 const logout = document.querySelector('#logout');
 logout.addEventListener('touchend', (e) => {
     e.preventDefault();
