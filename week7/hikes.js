@@ -40,7 +40,13 @@ export default class Hikes {
             this.backButton = this.buildBackButton();
             this.comments = new Comments('hikes', 'comments');
         }
-        // why is this function necessary?  hikeList is not exported, and so it cannot be seen outside of this module. I added this in case I ever need the list of hikes outside of the module. This also sets me up nicely if my data were to move. I can just change this method to the new source and everything will still work if I only access the data through this getter.
+        // why is this function necessary?  hikeList is not exported, 
+        //and so it cannot be seen outside of this module. I added this in 
+        //case I ever need the list of hikes outside of the module. 
+        //This also sets me up nicely if my data were to move. 
+        //I can just change this method to the new source and 
+        //everything will still work if I only access the data through this getter.
+        
     getAllHikes() {
             return hikeList;
         }
