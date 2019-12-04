@@ -24,7 +24,7 @@ auth.onAuthStateChanged(user => {
 function renderUserInfo(docs){
     let docData = docs.data();
     return docData;
-    const item = document.createElement('li');
+    let item = document.createElement('li');
     item.classList.add('light');
 
 
