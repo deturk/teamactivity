@@ -3,7 +3,11 @@ import {auth,dbase} from './firebase.js';
 let docs = null ;
 dbase.collection('users').get().then(snapshot => {
     console.log(snapshot.docs);
-    docs = snapshot.docs;
+    snapshot.docs.forEach(doc => {
+        let docData = doc.data();
+        return docData;
+    });
+    docs = docData;
     
 })
 
@@ -17,18 +21,20 @@ auth.onAuthStateChanged(user => {
 });
 
 //get document from the database and render it in the frontend
-function renderUserInfo(doc){
+function renderUserInfo(docs){
+    let docData = docs.data();
+    return docData;
     const item = document.createElement('li');
     item.classList.add('light');
 
 
-    item.setAttribute('data-id', doc.id);
-    item.innerHTML = `<h2>${doc.name}</h2>
+    item.setAttribute('data-id', docData.id);
+    item.innerHTML = `<h2>${docData.name}</h2>
     
     <div>  
         <div>
             <h3>username</h3>
-            <p>${doc.username}</p>
+            <p>${docData.username}</p>
         </div>
     </div>
     `
@@ -37,7 +43,9 @@ function renderUserInfo(doc){
 const userAccount = document.querySelector('#accountDetails');
 userAccount.addEventListener('touchend', (e) =>{
     e.preventDefault();
+    console.log(docs);
     renderUserInfo(docs);
+
 });
 
 
