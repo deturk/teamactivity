@@ -1,4 +1,4 @@
-
+import{dbase,auth} from './firebase.js';
 
 //listen for auth status
 auth.onAuthStateChanged(user =>{
