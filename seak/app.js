@@ -39,7 +39,7 @@ function renderUserInfo(docs){
     </div>
     `
 }
-
+//listen to click event on user details.
 const userAccount = document.querySelector('#accountDetails');
 userAccount.addEventListener('touchend', (e) =>{
     e.preventDefault();
