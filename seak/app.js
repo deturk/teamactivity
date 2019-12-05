@@ -225,14 +225,20 @@ const addNewCustomer = document.querySelector('#addNewCustomer');
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
-    const password = document.getElementById('sign-up-pass').value;
-    const rptpassword = document.getElementById('repeat-pass').value;
+    const street = document.getElementById('street').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const phone = document.getElementById('phone').value;
 
     // grab data from  the form and save to databse
-    dbase.collection('users').add({
+    dbase.collection('customers').add({
         firstname : firstname,
         lastname: lastname,
-        email: email
+        email: email,
+        street: street,
+        city: city,
+        state: state,
+        phone: phone
 
     });
     //console.log(firstname, lastname, email, password, rptpassword);
