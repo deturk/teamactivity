@@ -36,8 +36,9 @@ auth.onAuthStateChanged(user => {
 
 //get document from the database and render it in the frontend
 let item = document.createElement('ul');
+
 function renderUserInfo() {
-    
+
     let firstname = document.createElement('div');
     let lastname = document.createElement('div');
     let email = document.createElement('div');
@@ -84,14 +85,14 @@ function renderUserInfo() {
 let options = document.createElement('ul');
 let addOption = document.createElement('div');
 let viewOption = document.createElement('div');
+
 function addCustomerOptions(doc) {
-    
-    options.classList.add('light');
 
-    addOption.textContent = 'Add Customer';
-    viewOption.textContent = 'View Customers';
+    // options.classList.add('light');
 
-    options.setAttribute('data-id', doc.id);
+    addOption.textContent = 'Add';
+    viewOption.textContent = 'View';
+
     options.appendChild(addOption);
     options.appendChild(viewOption);
 
@@ -100,14 +101,14 @@ function addCustomerOptions(doc) {
 
 
 
-function getCustomerData(){
+function getCustomerData() {
     dbase.collection('customers').get()
-    .then((snapshot) =>{
-        snapshot.docs.forEach(doc => {
-            addCustomerOptions(doc);
+        .then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                addCustomerOptions(doc);
+            });
+
         });
-        
-    })
 }
 
 
@@ -128,9 +129,10 @@ const userAccount = document.querySelector('#accountDetails');
 userAccount.addEventListener('touchend', (e) => {
     e.preventDefault();
 
-    if(item.style.display === "none"){
+    if (item.style.display === "none") {
         item.style.display = "block";
-    }else {item.style.display = "none";
+    } else {
+        item.style.display = "none";
     }
     //renderUserInfo();
 });
@@ -143,9 +145,10 @@ const customerInfo = document.querySelector('#customer');
 customerInfo.addEventListener('touchend', (e) => {
     e.preventDefault();
     getCustomerData();
-    if(options.style.display === "none"){
+    if (options.style.display === "none") {
         options.style.display = "block";
-    }else {options.style.display = "none";
+    } else {
+        options.style.display = "none";
     }
 });
 
@@ -161,5 +164,3 @@ logout.addEventListener('touchend', (e) => {
         location.href = 'login.html';
     });
 });
-
-
