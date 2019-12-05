@@ -12,6 +12,7 @@ function getUserInfo(userId) {
             //console.log(snapshot);
 
             userData = snapshot.docs[0].data();
+            renderUserInfo();
 
         });
 }
@@ -34,8 +35,9 @@ auth.onAuthStateChanged(user => {
 });
 
 //get document from the database and render it in the frontend
+let item = document.createElement('ul');
 function renderUserInfo() {
-    let item = document.createElement('li');
+    
     let firstname = document.createElement('div');
     let lastname = document.createElement('div');
     let email = document.createElement('div');
@@ -48,7 +50,7 @@ function renderUserInfo() {
     email.textContent = userData.email;
 
 
-    item.appendChild(firstname) 
+    item.appendChild(firstname);
     item.appendChild(lastname);
     item.appendChild(email);
     userAccount.appendChild(item);
@@ -56,27 +58,67 @@ function renderUserInfo() {
 
 }
 
+//hide and show customer divs
+// function customerDivs(){
+//     let divs = document.createElement('ul');
+//     let addOption = document.createElement('div');
+//     let viewOption = document.createElement('div');
+
+//     addOption.textContent = 'Add Customer';
+//     viewOption.textContent = 'View Customers';
+
+//     divs.appendChild(addOption);
+//     divs.appendChild(viewOption);
+
+//     divs.classList.add('divOptions');
+
+
+//     customerInfo.appendChild(divs);
+//     console.log(divs);
+
+// }
 //get customer information
-let customerList = null;
+//let customerList = null;
+
+//function to display customer options
+let options = document.createElement('ul');
+let addOption = document.createElement('div');
+let viewOption = document.createElement('div');
+function addCustomerOptions(doc) {
+    
+    options.classList.add('light');
+
+    addOption.textContent = 'Add Customer';
+    viewOption.textContent = 'View Customers';
+
+    options.setAttribute('data-id', doc.id);
+    options.appendChild(addOption);
+    options.appendChild(viewOption);
+
+    customerInfo.appendChild(options);
+}
+
+
+
 function getCustomerData(){
-    dbase.collection('customers').get().then((snapshot) =>{
+    dbase.collection('customers').get()
+    .then((snapshot) =>{
         snapshot.docs.forEach(doc => {
-            
-            customerList = doc.data();
-            console.log(customerList );
+            addCustomerOptions(doc);
         });
+        
     })
 }
 
 
-//display customer on the frontend
-function showCustomers(){
-    document.body.innerHTML = `
-        <div id="customerList">
-            <form>${customerList.firstname}</form>
-        </div>
-    `
-}
+//display customer information on the frontend
+// function showCustomers(){
+//     document.body.innerHTML = `
+//         <div id="customerList">
+//             <form>${customerList.firstname}</form>
+//         </div>
+//     `
+// }
 
 
 
@@ -94,10 +136,20 @@ userAccount.addEventListener('touchend', (e) => {
 });
 
 
+
+//call function to get customer info on event
 const customerInfo = document.querySelector('#customer');
-customerInfo.addEventListener('touchend', (e) =>{
+
+customerInfo.addEventListener('touchend', (e) => {
+    e.preventDefault();
     getCustomerData();
+    if(options.style.display === "none"){
+        options.style.display = "block";
+    }else {options.style.display = "none";
+    }
 });
+
+
 
 
 //logout alert
@@ -111,22 +163,3 @@ logout.addEventListener('touchend', (e) => {
 });
 
 
-//append buttons to customer item
-const customerInfo = document.querySelector('#customer');
-
-customerOptions.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    addCustomerOptions();
-});
-
-let options = createElement('ul');
-
-function addCustomerOptions() {
-    let addOption = document.createElement('div');
-    let viewOption = document.createElement('div');
-
-    options.appendChild(addOption);
-    options.appendChild(viewOption);
-
-    customerInfo.appendChild(options);
-}
