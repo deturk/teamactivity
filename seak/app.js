@@ -10,6 +10,7 @@ function getUserInfo(userId){
         //console.log(snapshot.docs[0].id);
         //console.log(snapshot);
         userData = snapshot.docs[0].data();
+        //console.log(userData);
         renderUserInfo();
             
         });
@@ -44,7 +45,7 @@ function renderUserInfo(){
     email.textContent = userData.email;
 
 
-    item.appendChild(firstname);
+    item.appendChild(firstname) 
     item.appendChild(lastname);
     item.appendChild(email);
     userAccount.appendChild(item);
@@ -53,10 +54,29 @@ function renderUserInfo(){
     
 }
 
-//toggle the user account content
-// function hideUserDetails(){
-//    userAccount.removeChild(item);
-// }
+//get customer information
+let customerList = null;
+function getCustomerData(){
+    dbase.collection('customers').get().then((snapshot) =>{
+        snapshot.docs.forEach(doc => {
+            
+            customerList = doc.data();
+            console.log(customerList );
+        });
+    })
+}
+
+
+//display customer on the frontend
+function showCustomers(){
+    document.body.innerHTML = `
+        <div id="customerList">
+            <form>${customerList.firstname}</form>
+        </div>
+    `
+}
+
+
 
 //listen to click event on user details.
 const userAccount = document.querySelector('#accountDetails');
@@ -72,6 +92,12 @@ userAccount.addEventListener('touchend', (e) =>{
 });
 
 
+const customerInfo = document.querySelector('#customer');
+customerInfo.addEventListener('touchend', (e) =>{
+    getCustomerData();
+});
+
+
 //logout alert
 const logout = document.querySelector('#logout');
 logout.addEventListener('touchend', (e) => {
@@ -81,6 +107,5 @@ logout.addEventListener('touchend', (e) => {
         location.href = 'login.html';
     });
 });
-
 
 
