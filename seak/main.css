@@ -129,8 +129,9 @@ a:hover {
 
 
 /* div options */
-.divOptions{
-  display: inline-block;
+.divOptions {
+  display: inline;
+  color: blue;
 }
 
 
