@@ -1,35 +1,26 @@
 //get data from firestore
 import {auth,dbase} from './firebase.js';
 
-//let docs = null ;
 
 //create a function to get user info
 let userData = null;
 function getUserInfo(userId){
     dbase.collection('users').where("email", "==", userId)
     .get().then((snapshot) => {
-        console.log(snapshot.docs[0].id);
+        //console.log(snapshot.docs[0].id);
         //console.log(snapshot);
-            
-            userData = snapshot.docs[0].data();
+        userData = snapshot.docs[0].data();
             
         });
 }
  
-    
-    
-
-
-//console.log(docs.email);
 
 //const userInfo = document.querySelector('#userinfo');
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log(user.email, 'logged in');
-          getUserInfo(user.email);
-
-          
+        getUserInfo(user.email);   
     } else {
         console.log('user logged out');
     }
