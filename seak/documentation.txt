@@ -27,7 +27,7 @@ Application Interface:
         Query interface 
         Most busy days
 6.	Log out tab	
-7.	Map generated form IP address of users.
+7.	Map generated from IP address of users.
 Project Timeline: 7 weeks (week 6 -13)
 1.	Week 6 complete sign in pages - completed
 2.	Week 7 complete sign up pages - completed
