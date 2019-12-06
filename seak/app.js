@@ -204,7 +204,7 @@ function addForm() {
       <br><br>
       <input type="text"  id="email" name="email" placeholder="Email">
       <br><br>
-      <input type="text"  id="street" name="address" placeholder="Street Address">
+      <input type="text"  id="street" name="street" placeholder="Street Address">
       <br><br>
       <input type="text"  id="city" name="city" placeholder="City">
       <br><br>
@@ -212,19 +212,17 @@ function addForm() {
       <br><br>
        <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
       <br><br>
-      <input type="Submit" id="addNewCustomer" value="Add Customer">
-      
-      <br>
-      <br>
+      <input type="submit" class="button" id="addNewCustomer" value="Add Customer">
+      <br><br>
     </form>
     `;
+
 }
 
 //save form values to database
 const addNewCustomer = document.querySelector('#addNewCustomer');
 addNewCustomer.addEventListener('touchend', (e) => {
     e.preventDefault();
-
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
@@ -232,7 +230,6 @@ addNewCustomer.addEventListener('touchend', (e) => {
     const city = document.getElementById('city').value;
     const state = document.getElementById('state').value;
     const phone = document.getElementById('phone').value;
-
     // grab data from  the form and save to databse
     dbase.collection('customers').add({
         firstname: firstname,
@@ -242,10 +239,7 @@ addNewCustomer.addEventListener('touchend', (e) => {
         city: city,
         state: state,
         phone: phone
-
     });
-    //console.log(firstname, lastname, email, password, rptpassword);
-
 });
 
 
