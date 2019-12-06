@@ -7,7 +7,7 @@ const userAccount = document.querySelector('#accountDetails');
 //create a function to get user info
 let userData = null;
 
-async function getUserInfo(userId) {
+ function getUserInfo(userId) {
     dbase.collection('users').where("email", "==", userId)
         .get().then((snapshot) => {
             console.log(snapshot.docs[0].id);
@@ -150,7 +150,7 @@ customerInfo.addEventListener('touchend', (e) => {
     }
 });
 
-function addForm(){
+async function addForm(){
     document.body.innerHTML = `
     <nav role="navigation">
             <div id="menuToggle">
@@ -194,14 +194,14 @@ function addForm(){
         </nav>
     <h2>Customer Form</h2>
 
-    <form action="/action_page.php">
+    <form>
       <input type="text" id="firstname" name="firstname" placeholder="First Name">
       <br><br>
       <input type="text"  id="lastname" name="lastname" placeholder="Last Name">
       <br><br>
       <input type="text"  id="email" name="email" placeholder="Email">
       <br><br>
-      <input type="text"  id="street" name="address" placeholder="Street Address">
+      <input type="text"  id="street" name="street" placeholder="Street Address">
       <br><br>
       <input type="text"  id="city" name="city" placeholder="City">
       <br><br>
@@ -209,19 +209,17 @@ function addForm(){
       <br><br>
        <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
       <br><br>
-      <input type="Submit" id="addNewCustomer" value="Add Customer">
-      
-      <br>
-      <br>
+      <input type="submit" class="button" id="addNewCustomer" value="Add Customer">
+      <br><br>
     </form>
     `;
+
 }
 
 //save form values to database
 const addNewCustomer = document.querySelector('#addNewCustomer');
-    addNewCustomer.addEventListener('touchend', (e) => {
+   addNewCustomer.addEventListener('touchend', (e) => {
     e.preventDefault();
-
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
@@ -229,20 +227,16 @@ const addNewCustomer = document.querySelector('#addNewCustomer');
     const city = document.getElementById('city').value;
     const state = document.getElementById('state').value;
     const phone = document.getElementById('phone').value;
-
     // grab data from  the form and save to databse
     dbase.collection('customers').add({
-        firstname : firstname,
+        firstname: firstname,
         lastname: lastname,
         email: email,
         street: street,
         city: city,
         state: state,
         phone: phone
-
     });
-    //console.log(firstname, lastname, email, password, rptpassword);
-    
 });
 
 
