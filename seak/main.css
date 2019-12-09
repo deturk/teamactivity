@@ -430,3 +430,17 @@ body {
 .customer-list{
   display: none;
 }
+
+/* hide customer html  */
+ /* #addCustomer{
+  display: none;
+} */
+
+.showAddForm{
+  display: block;
+  z-index: 2;
+} 
+
+.hideAddForm{
+  display: none;
+}

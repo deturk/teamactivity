@@ -162,69 +162,14 @@ customerInfo.addEventListener('touchend', (e) => {
     }
 });
 
-async function addForm(){
-    document.body.innerHTML = `
-    <nav role="navigation">
-            <div id="menuToggle">
-                <!--
-                            A fake / hidden checkbox is used as click reciever,
-                            so you can use the :checked selector on it.
-                            -->
-                <input type="checkbox" />
-
-                <!--
-                            Some spans to act as a hamburger.
-                            
-                            They are acting like a real hamburger,
-                            not that McDonalds stuff.
-                            -->
-                <span></span>
-                <span></span>
-                <span></span>
-
-                <!--
-                            Too bad the menu has to be inside of the button
-                            -->
-                            <ul id="menu">
-                            <a href="main.html">
-                                <li>Home</li>
-                            </a>
-                            <a href="#">
-                                <li>Account Details</li>
-                            </a>
-                            <a href="contactus.html">
-                                <li>Contact Us</li>
-                            </a>
-                            <a href="">
-                                <li>Customer</li>
-                            </a>
-                            <a href="#">
-                                <li id="logout">Log Out</li>
-                            </a>
-                        </ul>
-            </div>
-        </nav>
-    <h2>Customer Form</h2>
-
-    <form>
-      <input type="text" id="firstname" name="firstname" placeholder="First Name">
-      <br><br>
-      <input type="text"  id="lastname" name="lastname" placeholder="Last Name">
-      <br><br>
-      <input type="text"  id="email" name="email" placeholder="Email">
-      <br><br>
-      <input type="text"  id="street" name="street" placeholder="Street Address">
-      <br><br>
-      <input type="text"  id="city" name="city" placeholder="City">
-      <br><br>
-      <input type="text"  id="state" name="state" placeholder="State">
-      <br><br>
-       <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
-      <br><br>
-      <input type="submit" class="button" id="addNewCustomer" value="Add Customer">
-      <br><br>
-    </form>
-    `;
+ function addForm(){
+    let addForm = document.querySelector('.addCustomer');
+    addForm.addEventListener('touchend', (e)=>{
+        location.href = '#addCustomerForm';
+        addForm.classList.add('showAddForm');
+        
+    });
+    
 
 }
 
