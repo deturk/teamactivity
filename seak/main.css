@@ -421,4 +421,12 @@ body {
   color: #FF5C5C;
 }
 
-/*# sourceMappingURL=main.css.map */
+/* set user details to display none */
+.light{
+  display: none;
+}
+
+/* set customer view options */
+.customer-list{
+  display: none;
+}

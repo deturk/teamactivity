@@ -120,6 +120,7 @@ async function viewCustomers(doc){
     let city = document.createElement('div');
     let state = document.createElement('div');
     let phone = document.createElement('div');
+    customerList.classList.add('customer-list');
 
     customerList.setAttribute('data-id', doc.id);
     firstname.textContent = doc.data().firstname;
@@ -155,9 +156,9 @@ customerInfo.addEventListener('touchend', (e) => {
     if(e.target.innerHTML == 'Add'){
         addForm();
     }else if(e.target.innerHTML == 'View'){
-        viewCustomers(doc);
+        customerList.style.display = 'block';
     }else{
-        console.log('Please select Add or View');
+        customerList.style.display = 'none';
     }
 });
 
