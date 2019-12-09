@@ -20,7 +20,6 @@ let userData = null;
 }
 
 
-
 //console.log(docs.email);
 
 //const userInfo = document.querySelector('#userinfo');
@@ -59,66 +58,7 @@ function renderUserInfo() {
 
 
 }
-
-//hide and show customer divs
-// function customerDivs(){
-//     let divs = document.createElement('ul');
-//     let addOption = document.createElement('div');
-//     let viewOption = document.createElement('div');
-
-//     addOption.textContent = 'Add Customer';
-//     viewOption.textContent = 'View Customers';
-
-//     divs.appendChild(addOption);
-//     divs.appendChild(viewOption);
-
-//     divs.classList.add('divOptions');
-
-
-//     customerInfo.appendChild(divs);
-//     console.log(divs);
-
-// }
-//get customer information
-//let customerList = null;
-
-//function to display customer options
-let options = document.createElement('ul');
-let addOption = document.createElement('div');
-let viewOption = document.createElement('div');
-
-function addCustomerOptions(doc) {
-
-    addOption.textContent = 'Add';
-    viewOption.textContent = 'View';
-
-    options.classList.add('divOptions');
-    addOption.classList.add('addCustomer');
-    viewOption.classList.add('viewCustomer');
-
-    //options.setAttribute('data-id', doc.id);
-    options.appendChild(addOption);
-    options.appendChild(viewOption);
-
-    customerInfo.appendChild(options);
-}
-
-
-
-//const viewCustomer = document.querySelector('.view');
-
-
-function getCustomerData(){
-    dbase.collection('customers').get()
-    .then((snapshot) =>{
-        snapshot.docs.forEach(doc => {
-            addCustomerOptions(doc);
-        });
-        
-    })
-}
-
-
+item.style.display == 'none';
 
 //listen to click event on user details.
 userAccount.addEventListener('touchend', (e) => {
@@ -133,20 +73,91 @@ userAccount.addEventListener('touchend', (e) => {
 
 
 
+//get all customer documents and loop through.
+//Use the viewCustomer function to display it in the html
+
+dbase.collection('customers')
+.get()
+.then((snapshot)=>{
+    snapshot.docs.forEach(doc => {
+        viewCustomers(doc);
+        //console.log(doc.data());
+    });
+});
+
+//create global variables
+
+let options = document.createElement('ul');
+let addOption = document.createElement('div');
+let viewOption = document.createElement('div');
+
+//function to display customer options
+function customerOptions() {
+
+    addOption.textContent = 'Add';
+    viewOption.textContent = 'View';
+
+    options.classList.add('divOptions');
+    addOption.classList.add('addCustomer');
+    viewOption.classList.add('viewCustomer');
+
+    //options.setAttribute('data-id', doc.id);
+    options.appendChild(addOption);
+    options.appendChild(viewOption);
+
+    customerInfo.appendChild(options);
+}
+options.style.display == 'none';
+
+//function to view customers
+
+let customerList = document.createElement('ul');
+async function viewCustomers(doc){
+
+    let firstname = document.createElement('div');
+    let lastname = document.createElement('div');
+    let street = document.createElement('div');
+    let city = document.createElement('div');
+    let state = document.createElement('div');
+    let phone = document.createElement('div');
+
+    customerList.setAttribute('data-id', doc.id);
+    firstname.textContent = doc.data().firstname;
+    lastname.textContent = doc.data().lastname;
+    street.textContent = doc.data().street;
+    city.textContent = doc.data().city;
+    state.textContent = doc.data().state;
+    phone.textContent = doc.data().phone;
+
+
+    customerList.appendChild(firstname);
+    customerList.appendChild(lastname);
+    customerList.appendChild(street);
+    customerList.appendChild(city);
+    customerList.appendChild(state);
+    customerList.appendChild(phone);
+
+    customerInfo.appendChild(customerList);
+}
+
 //call function to get customer info on event
 const customerInfo = document.querySelector('#customer');
 
 customerInfo.addEventListener('touchend', (e) => {
     e.preventDefault();
-    getCustomerData();
+    customerOptions();
+    
     if(options.style.display === "none"){
         options.style.display = "block";
     }else {options.style.display = "none";
     };
+//decide which option is clicked and execute corresponding function
     if(e.target.innerHTML == 'Add'){
         addForm();
+    }else if(e.target.innerHTML == 'View'){
+        viewCustomers(doc);
     }else{
-        console.log('expecting view customers');
+        console.log('Please select Add or View');
     }
 });
 
