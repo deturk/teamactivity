@@ -123,12 +123,12 @@ async function viewCustomers(doc){
     customerList.classList.add('customer-list');
 
     customerList.setAttribute('data-id', doc.id);
-    firstname.textContent = doc.data().firstname;
-    lastname.textContent = doc.data().lastname;
-    street.textContent = doc.data().street;
-    city.textContent = doc.data().city;
-    state.textContent = doc.data().state;
-    phone.textContent = doc.data().phone;
+    firstname.textContent = `First Name : ${doc.data().firstname}`;
+    lastname.textContent = `Last Name: ${doc.data().lastname}`;
+    street.textContent = `Street Address: ${doc.data().streetaddress}`;
+    city.textContent = `City: ${doc.data().city}`;
+    state.textContent = `State: ${doc.data().state}`;
+    phone.textContent = `Phone: ${doc.data().phone}`;
 
 
     customerList.appendChild(firstname);
@@ -138,6 +138,8 @@ async function viewCustomers(doc){
     customerList.appendChild(state);
     customerList.appendChild(phone);
 
+
+    
     customerInfo.appendChild(customerList);
 }
 
@@ -165,8 +167,7 @@ customerInfo.addEventListener('touchend', (e) => {
  function addForm(){
     let addForm = document.querySelector('.addCustomer');
     addForm.addEventListener('touchend', (e)=>{
-        location.href = '#addCustomerForm';
-        addForm.classList.add('showAddForm');
+        document.getElementById('add-form').style.display = "block";
         
     });
     

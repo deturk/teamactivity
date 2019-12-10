@@ -432,14 +432,25 @@ body {
 }
 
 /* hide customer html  */
- /* #addCustomer{
+ /* div.addCustomer{
   display: none;
 } */
 
-.showAddForm{
+/* .showAddForm{
   display: block;
-} 
+}  */
 
 .hideAddForm{
   display: none;
+}
+
+.viewCustomer{
+  display: grid;
+}
+
+/* add form style */
+#add-form{
+  display: none;
+  position: absolute;
+  top: 0;
 }
