@@ -61,7 +61,7 @@ function renderUserInfo() {
 item.style.display == 'none';
 
 //listen to click event on user details.
-userAccount.addEventListener('touchend', (e) => {
+userAccount.addEventListener('click', (e) => {
     e.preventDefault();
 
     if(item.style.display === "none"){
@@ -146,7 +146,7 @@ async function viewCustomers(doc){
 //call function to get customer info on event
 const customerInfo = document.querySelector('#customer');
 
-customerInfo.addEventListener('touchend', (e) => {
+customerInfo.addEventListener('click', (e) => {
     e.preventDefault();
     customerOptions();
     
@@ -166,7 +166,7 @@ customerInfo.addEventListener('touchend', (e) => {
 
  function addForm(){
     let addForm = document.querySelector('.addCustomer');
-    addForm.addEventListener('touchend', (e)=>{
+    addForm.addEventListener('click', (e)=>{
         document.getElementById('add-form').style.display = "block";
         
     });
@@ -176,7 +176,7 @@ customerInfo.addEventListener('touchend', (e) => {
 
 //save form values to database
 const addNewCustomer = document.querySelector('#addNewCustomer');
-   addNewCustomer.addEventListener('touchend', (e) => {
+   addNewCustomer.addEventListener('click', (e) => {
     e.preventDefault();
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
@@ -206,7 +206,7 @@ const addNewCustomer = document.querySelector('#addNewCustomer');
 
 //logout alert
 const logout = document.querySelector('#logout');
-logout.addEventListener('touchend', (e) => {
+logout.addEventListener('click', (e) => {
     e.preventDefault();
     auth.signOut().then(() => {
         console.log('user signed out');

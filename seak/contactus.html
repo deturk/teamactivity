@@ -8,46 +8,36 @@
 </head>
 
 <body>
-    <nav role="navigation">
-        <div id="menuToggle">
-            <!--
-                                A fake / hidden checkbox is used as click reciever,
-                                so you can use the :checked selector on it.
-                                -->
-            <input type="checkbox" />
-
-            <!--
-                                Some spans to act as a hamburger.
-                                
-                                They are acting like a real hamburger,
-                                not that McDonalds stuff.
-                                -->
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <!--
-                                Too bad the menu has to be inside of the button
-                                -->
-            <ul id="menu">
-                <a href="main.html">
-                    <li>Home</li>
-                </a>
-                <a href="#">
-                    <li>Account Details</li>
-                </a>
-                <a href="contactus.html">
-                    <li>Contact Us</li>
-                </a>
-                <a href="">
-                    <li>Customer</li>
-                </a>
-                <a href="#">
-                    <li id="logout">Log Out</li>
-                </a>
-            </ul>
-        </div>
-    </nav>
+    <div class="main">
+            <nav role="navigation">
+                    <div id="menuToggle">
+                        <!--
+                                    A fake / hidden checkbox is used as click reciever,
+                                    so you can use the :checked selector on it.
+                                    -->
+                        <input type="checkbox" />
+        
+                        <!--Some spans to act as a hamburger.-->
+                        <span></span>
+                        <span></span>
+                        <span></span>
+        
+                        <ul id="menu">
+                            <a href="#">
+                                <li id="accountDetails">Account Details</li>
+                            </a>
+                            <a href="contactus.html">
+                                <li>Contact Us</li>
+                            </a>
+                            <a id="addCustomerForm">
+                                <li id="customer">Customer</li>
+                            </a>
+                            <a href="#">
+                                <li id="logout">Log Out</li>
+                            </a>
+                        </ul>
+                    </div>
+                </nav>
     <div id="contactForm" class="contactForm">
         <div id="formHeader" class="formHeader">
             <h1 id="message">Contact Seak</h1>

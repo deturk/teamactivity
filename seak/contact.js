@@ -173,7 +173,7 @@
                 //WAIT FOR ANIMATION TO FINISH
                 this.changeHeader("Sent Succesfully");
                 //WAIT FOR ANIMATION TO FINISH
-                setTimeout(this.changeHeader.bind(this, "Thank you for your feedback"), 1200);
+                setTimeout(this.changeHeader.bind(this, "Thank you for your feedback"), 5000);
             },
             changeHeader: function(text) {
                 //CHANGE HEADER TEXT
