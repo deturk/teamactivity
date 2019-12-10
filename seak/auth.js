@@ -11,7 +11,7 @@ auth.onAuthStateChanged(user =>{
 
 //sign up form
 const signup = document.querySelector('#sign-up-btn');
-    signup.addEventListener('touchend', (e) => {
+    signup.addEventListener('click', (e) => {
     e.preventDefault();
 
     const firstname = document.getElementById('firstname').value;
@@ -48,7 +48,7 @@ function welcomeUser(credentials){
 //sign in form
  const signin = document.querySelector('#sign-in-btn');
 
-    signin.addEventListener('touchend', (e) => {
+    signin.addEventListener('click', (e) => {
     e.preventDefault();
     const username = document.getElementById('user').value;
     const password = document.getElementById('pass').value;

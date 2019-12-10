@@ -123,12 +123,12 @@ async function viewCustomers(doc){
     customerList.classList.add('customer-list');
 
     customerList.setAttribute('data-id', doc.id);
-    firstname.textContent = `First Name : ${doc.data().firstname}`;
-    lastname.textContent = `Last Name: ${doc.data().lastname}`;
-    street.textContent = `Street Address: ${doc.data().streetaddress}`;
-    city.textContent = `City: ${doc.data().city}`;
-    state.textContent = `State: ${doc.data().state}`;
-    phone.textContent = `Phone: ${doc.data().phone}`;
+    firstname.textContent = doc.data().firstname;
+    lastname.textContent = doc.data().lastname;
+    street.textContent = doc.data().street;
+    city.textContent = doc.data().city;
+    state.textContent = doc.data().state;
+    phone.textContent = doc.data().phone;
 
 
     customerList.appendChild(firstname);
@@ -138,8 +138,6 @@ async function viewCustomers(doc){
     customerList.appendChild(state);
     customerList.appendChild(phone);
 
-
-    
     customerInfo.appendChild(customerList);
 }
 
@@ -165,7 +163,7 @@ customerInfo.addEventListener('click', (e) => {
 });
 
  function addForm(){
-    let addForm = document.querySelector('.addCustomer');
+    let addForm = document.querySelector('#add-form');
     addForm.addEventListener('click', (e)=>{
         document.getElementById('add-form').style.display = "block";
         
@@ -181,7 +179,7 @@ const addNewCustomer = document.querySelector('#addNewCustomer');
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
-    const street = document.getElementById('street').value;
+    const streetaddress = document.getElementById('street').value;
     const city = document.getElementById('city').value;
     const state = document.getElementById('state').value;
     const phone = document.getElementById('phone').value;
@@ -190,7 +188,7 @@ const addNewCustomer = document.querySelector('#addNewCustomer');
         firstname: firstname,
         lastname: lastname,
         email: email,
-        street: street,
+        streetaddress: streetaddress,
         city: city,
         state: state,
         phone: phone
