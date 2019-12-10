@@ -7,7 +7,7 @@ const userAccount = document.querySelector('#accountDetails');
 //create a function to get user info
 let userData = null;
 
-function getUserInfo(userId) {
+ function getUserInfo(userId) {
     dbase.collection('users').where("email", "==", userId)
         .get().then((snapshot) => {
             console.log(snapshot.docs[0].id);
@@ -37,9 +37,8 @@ auth.onAuthStateChanged(user => {
 
 //get document from the database and render it in the frontend
 let item = document.createElement('ul');
-
 function renderUserInfo() {
-
+    
     let firstname = document.createElement('div');
     let lastname = document.createElement('div');
     let email = document.createElement('div');
@@ -153,8 +152,7 @@ customerInfo.addEventListener('click', (e) => {
     
     if(options.style.display === "none"){
         options.style.display = "block";
-    } else {
-        options.style.display = "none";
+    }else {options.style.display = "none";
     };
 //decide which option is clicked and execute corresponding function
     if(e.target.innerHTML == 'Add'){
@@ -214,3 +212,5 @@ logout.addEventListener('click', (e) => {
         location.href = 'login.html';
     });
 });
+
+
