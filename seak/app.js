@@ -181,7 +181,7 @@ const addNewCustomer = document.querySelector('#addNewCustomer');
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
     const email = document.getElementById('email').value;
-    const street = document.getElementById('street').value;
+    const streetaddress = document.getElementById('street').value;
     const city = document.getElementById('city').value;
     const state = document.getElementById('state').value;
     const phone = document.getElementById('phone').value;
@@ -190,11 +190,12 @@ const addNewCustomer = document.querySelector('#addNewCustomer');
         firstname: firstname,
         lastname: lastname,
         email: email,
-        street: street,
+        streetaddress: streetaddress,
         city: city,
         state: state,
         phone: phone
     });
+    addNewCustomer.reset();
 });
 
 
