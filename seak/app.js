@@ -145,8 +145,8 @@ customerInfo.addEventListener('touchend', (e) => {
         options.style.display = "block";
     } else {
         options.style.display = "none";
-    };
-    if (e.target.innerHTML == 'Add') {
+    }
+    if (e.target.innerHTML === 'Add') {
         addForm();
     } else {
         console.log('expecting view customers');
@@ -186,7 +186,7 @@ function addForm() {
                             <a href="contactus.html">
                                 <li>Contact Us</li>
                             </a>
-                            <a href="">
+                            <a href="#customer">
                                 <li>Customer</li>
                             </a>
                             <a href="#">
@@ -195,26 +195,39 @@ function addForm() {
                         </ul>
             </div>
         </nav>
-    <h2>Customer Form</h2>
+        <div id="contactForm" class="contactForm">
+        <div id="formHeader" class="formHeader">
+    <h2 id="message">Add New Customer</h2>
+    </div>
 
-    <form>
+<div id="formBody" class="formBody">
+    <form inctype=text/plain>
+    <div class="inputContainer">
       <input type="text" id="firstname" name="firstname" placeholder="First Name">
-      <br><br>
+    </div>
+    <div class="inputContainer">
       <input type="text"  id="lastname" name="lastname" placeholder="Last Name">
-      <br><br>
+    </div>
+    <div class="inputContainer">    
       <input type="text"  id="email" name="email" placeholder="Email">
-      <br><br>
+    </div>
+    <div class="inputContainer">
       <input type="text"  id="street" name="street" placeholder="Street Address">
-      <br><br>
+    </div>
+    <div class="inputContainer">
       <input type="text"  id="city" name="city" placeholder="City">
-      <br><br>
+    </div>
+    <div class="inputContainer">
       <input type="text"  id="state" name="state" placeholder="State">
-      <br><br>
+    </div>
+    <div class="inputContainer">
        <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
-      <br><br>
-      <input type="submit" class="button" id="addNewCustomer" value="Add Customer">
+    </div>
+      <input type="submit" class="submitBtn" id="addNewCustomer" value="Add Customer">
       <br><br>
     </form>
+    </div>
+    </div>
     `;
 
 }
