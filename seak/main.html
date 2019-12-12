@@ -5,49 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 charset=UTF-8">
     <title>Home</title>
     <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 
 <body>
-    <div class="main">
-        <nav role="navigation">
-            <div id="menuToggle">
-                <!--
+    <div class="main"></div>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <!--
                             A fake / hidden checkbox is used as click reciever,
                             so you can use the :checked selector on it.
                             -->
-                <input type="checkbox" />
+            <input type="checkbox" />
 
-                <!--Some spans to act as a hamburger.-->
-                <span></span>
-                <span></span>
-                <span></span>
+            <!--
+                            Some spans to act as a hamburger.
+                            
+                            They are acting like a real hamburger,
+                            not that McDonalds stuff.
+                            -->
+            <span></span>
+            <span></span>
+            <span></span>
 
-                <ul id="menu">
-                    <a href="#">
-                        <li id="accountDetails">Account Details</li>
-                    </a>
-                    <a href="contactus.html">
-                        <li>Contact Us</li>
-                    </a>
-                    <a id="addCustomerForm">
-                        <li id="customer">Customer</li>
-                    </a>
-                    <a href="#">
-                        <li id="logout">Log Out</li>
-                    </a>
-                </ul>
-            </div>
-        </nav>
-        <div class="container">
-            <img src="../seak/seak-images/mainpic2.jpg" height="128" width="196">
+            <!--
+                            Too bad the menu has to be inside of the button
+                            -->
+            <ul id="menu">
+                <a href="#">
+                    <li id="accountDetails">Account Details</li>
+                </a>
+                <!-- <a href="#customer">
+                    <li id="customer">Customer</li>
+                </a> -->
+                <a href="contactus.html">
+                    <li>Contact Us</li>
+                </a>
+                <a href="#">
+                    <li id="logout">Log Out</li>
+                </a>
+            </ul>
         </div>
+    </nav>
+
     </div>
-
-    <div class="header">
-        <div class="container">
-
-            <a class="btn" href="#"></a>
+    <div id="contactForm" class="contactForm">
+        <div id="formHeader" class="formHeader">
+            <h1 id="message">SEAK CRM</h1>
         </div>
     </div>
 
@@ -69,33 +75,6 @@
                 <p>&copy; SEAK</p>
             </div>
         </div>
-        <a href="#addCustomerForm">
-            <div>
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 3eeb71b... Revert "everything is working now. the form is hidden behind the menu. someone should fix it"
-                <form id="add-form">
-                    <h2>Customer Form</h2>
-                    <input type="text" id="firstname" name="firstname" placeholder="First Name">
-                    <br><br>
-                    <input type="text" id="lastname" name="lastname" placeholder="Last Name">
-                    <br><br>
-                    <input type="text" id="email" name="email" placeholder="Email">
-                    <br><br>
-                    <input type="text" id="street" name="street" placeholder="Street Address">
-                    <br><br>
-                    <input type="text" id="city" name="city" placeholder="City">
-                    <br><br>
-                    <input type="text" id="state" name="state" placeholder="State">
-                    <br><br>
-                    <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
-                    <br><br>
-                    <input type="submit" class="button" id="addNewCustomer" value="Add Customer">
-                    <br><br>
-                </form>
-            </div>
-        </a>
 
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
