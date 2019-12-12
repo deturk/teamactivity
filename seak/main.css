@@ -432,7 +432,7 @@ body {
 }
 
 /* hide customer html  */
- /* #addCustomer{
+ /* div.addCustomer{
   display: none;
 } */
 
@@ -443,6 +443,12 @@ body {
 .hideAddForm{
   display: none;
 }
+
+.viewCustomer{
+  display: grid;
+}
+
+/* add form style */
 #add-form{
   display: none;
   position: absolute;

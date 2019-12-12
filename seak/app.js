@@ -152,12 +152,12 @@ async function viewCustomers(doc) {
     customerList.classList.add('customer-list');
 
     customerList.setAttribute('data-id', doc.id);
-    firstname.textContent = doc.data().firstname;
-    lastname.textContent = doc.data().lastname;
-    street.textContent = doc.data().street;
-    city.textContent = doc.data().city;
-    state.textContent = doc.data().state;
-    phone.textContent = doc.data().phone;
+    firstname.textContent = `First Name : ${doc.data().firstname}`;
+    lastname.textContent = `Last Name: ${doc.data().lastname}`;
+    street.textContent = `Street Address: ${doc.data().streetaddress}`;
+    city.textContent = `City: ${doc.data().city}`;
+    state.textContent = `State: ${doc.data().state}`;
+    phone.textContent = `Phone: ${doc.data().phone}`;
 
 
     customerList.appendChild(firstname);
@@ -167,6 +167,8 @@ async function viewCustomers(doc) {
     customerList.appendChild(state);
     customerList.appendChild(phone);
 
+
+    
     customerInfo.appendChild(customerList);
 }
 
@@ -179,9 +181,15 @@ customerInfo.addEventListener('click', (e) => {
     addForm();
 });
 
+<<<<<<< HEAD
 function addForm() {
     let addForm = document.querySelector('#add-form');
     addForm.addEventListener('click', (e) => {
+=======
+ function addForm(){
+    let addForm = document.querySelector('.addCustomer');
+    addForm.addEventListener('click', (e)=>{
+>>>>>>> parent of 3eeb71b... Revert "everything is working now. the form is hidden behind the menu. someone should fix it"
         document.getElementById('add-form').style.display = "block";
 
     });
@@ -190,6 +198,7 @@ function addForm() {
 }
 
 //save form values to database
+<<<<<<< HEAD
 function addCustomerForm() {
     const addNewCustomer = document.querySelector('#addNewCustomer');
     addNewCustomer.addEventListener('touchend', (e) => {
@@ -211,6 +220,27 @@ function addCustomerForm() {
             state: state,
             phone: phone
         });
+=======
+const addNewCustomer = document.querySelector('#addNewCustomer');
+   addNewCustomer.addEventListener('click', (e) => {
+    e.preventDefault();
+    const firstname = document.getElementById('firstname').value;
+    const lastname = document.getElementById('lastname').value;
+    const email = document.getElementById('email').value;
+    const street = document.getElementById('street').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const phone = document.getElementById('phone').value;
+    // grab data from  the form and save to databse
+    dbase.collection('customers').add({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        street: street,
+        city: city,
+        state: state,
+        phone: phone
+>>>>>>> parent of 3eeb71b... Revert "everything is working now. the form is hidden behind the menu. someone should fix it"
     });
 }
 
