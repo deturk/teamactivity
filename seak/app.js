@@ -21,6 +21,14 @@ function getUserInfo(userId) {
 
 
 
+dbase.collection('customers')
+    .get()
+    .then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            // viewCustomers(doc.data());
+            console.log(doc.data());
+        });
+    });
 //console.log(docs.email);
 
 //const userInfo = document.querySelector('#userinfo');
@@ -61,65 +69,48 @@ function renderUserInfo() {
 
 }
 
-//hide and show customer divs
-// function customerDivs(){
-//     let divs = document.createElement('ul');
-//     let addOption = document.createElement('div');
-//     let viewOption = document.createElement('div');
+// hide and show customer divs
 
-//     addOption.textContent = 'Add Customer';
-//     viewOption.textContent = 'View Customers';
+function customerDivs() {
+    let divs = document.createElement('ul');
+    let addOption = document.createElement('div');
+    let viewOption = document.createElement('div');
 
-//     divs.appendChild(addOption);
-//     divs.appendChild(viewOption);
+    addOption.textContent = 'Add Customer';
+    viewOption.textContent = 'View Customers';
 
-//     divs.classList.add('divOptions');
+    divs.appendChild(addOption);
+    divs.appendChild(viewOption);
+
+    divs.classList.add('divOptions');
 
 
-//     customerInfo.appendChild(divs);
-//     console.log(divs);
+    customerInfo.appendChild(divs);
+    console.log(divs);
 
-// }
-//get customer information
-//let customerList = null;
+}
 
 // function to display customer options
-// let options = document.createElement('ul');
-// let addOption = document.createElement('div');
-// let viewOption = document.createElement('div');
+let options = document.createElement('ul');
+let addOption = document.createElement('div');
+let viewOption = document.createElement('div');
 
-// function addCustomerOptions(doc) {
+function addCustomerOptions(doc) {
 
-//     // addOption.textContent = 'Add';
-//     // viewOption.textContent = 'View';
+    addOption.textContent = 'Add';
+    viewOption.textContent = 'View';
 
-//     // options.classList.add('divOptions');
-//     // addOption.classList.add('addCustomer');
-//     // viewOption.classList.add('viewCustomer');
+    options.classList.add('divOptions');
+    addOption.classList.add('addCustomer');
+    viewOption.classList.add('viewCustomer');
 
-//     options.setAttribute('data-id', doc.id);
-//     // options.appendChild(addOption);
-//     // options.appendChild(viewOption);
+    options.setAttribute('data-id', doc.id);
+    options.appendChild(addOption);
+    options.appendChild(viewOption);
 
-//     customerInfo.appendChild(options);
-// }
+    customerInfo.appendChild(options);
+}
 
-
-//get customer information
-const viewCustomer = document.querySelector('.view');
-// let ref = dbase.collection('customers');
-// ref.on('value', errData, gotData);
-
-// function gotData(data) {
-//     let names = data.val();
-//     let keys = Object.keys(names);
-//     console.log(keys);
-// }
-
-// function errData(err) {
-//     console.log('Error!');
-//     console.log('err');
-// }
 
 // viewCustomer.addEventListener('touchend', gotData(data));
 
@@ -134,8 +125,6 @@ function getCustomerData() {
         });
 }
 
-// viewCustomer.addEventListener('touchend', getCustomerData);
-
 //listen to click event on user details.
 userAccount.addEventListener('touchend', (e) => {
     e.preventDefault();
@@ -145,7 +134,7 @@ userAccount.addEventListener('touchend', (e) => {
     } else {
         item.style.display = "none";
     }
-    // renderUserInfo();
+    renderUserInfo();
 });
 
 
@@ -156,16 +145,7 @@ const customerInfo = document.querySelector('.addCustomer');
 customerInfo.addEventListener('touchend', (e) => {
     e.preventDefault();
     getCustomerData();
-    // if (options.style.display === "none") {
-    //     options.style.display = "block";
-    // } else {
-    //     options.style.display = "none";
-    // }
-    // if (e.target.innerHTML === 'Add') {
     addForm();
-    // } else {
-    //     console.log('expecting view customers');
-    // }
 });
 
 function addForm() {
@@ -245,32 +225,74 @@ function addForm() {
 }
 
 //save form values to database
-const addNewCustomer = document.querySelector('#addNewCustomer');
-addNewCustomer.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    const firstname = document.getElementById('firstname').value;
-    const lastname = document.getElementById('lastname').value;
-    const email = document.getElementById('email').value;
-    const street = document.getElementById('street').value;
-    const city = document.getElementById('city').value;
-    const state = document.getElementById('state').value;
-    const phone = document.getElementById('phone').value;
-    // grab data from  the form and save to databse
-    dbase.collection('customers').add({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        street: street,
-        city: city,
-        state: state,
-        phone: phone
+function addCustomerForm() {
+    const addNewCustomer = document.querySelector('#addNewCustomer');
+    addNewCustomer.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        const firstname = document.getElementById('firstname').value;
+        const lastname = document.getElementById('lastname').value;
+        const email = document.getElementById('email').value;
+        const street = document.getElementById('street').value;
+        const city = document.getElementById('city').value;
+        const state = document.getElementById('state').value;
+        const phone = document.getElementById('phone').value;
+        // grab data from  the form and save to databse
+        dbase.collection('customers').add({
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            street: street,
+            city: city,
+            state: state,
+            phone: phone
+        });
     });
-});
+}
 
 
+//get customer information
+// const customerBtn = document.querySelector('.view');
 
-// const  addCustomer = document.querySelector('.addCustomer');
-// addCustomer.addEventListener('touchend', addForm())
+// customerBtn.addEventListener('touchend', (e) => {
+//     e.preventDefault();
+//     viewCustomers();
+// });
+
+
+let customerList = document.createElement('ul');
+//function to view customers
+async function viewCustomers(doc) {
+
+    let firstname = document.createElement('div');
+    let lastname = document.createElement('div');
+    let street = document.createElement('div');
+    let city = document.createElement('div');
+    let state = document.createElement('div');
+    let phone = document.createElement('div');
+    customerList.classList.add('customer-list');
+
+    customerList.setAttribute('data-id', doc.id);
+    firstname.textContent = doc.data().firstname;
+    lastname.textContent = doc.data().lastname;
+    street.textContent = doc.data().street;
+    city.textContent = doc.data().city;
+    state.textContent = doc.data().state;
+    phone.textContent = doc.data().phone;
+
+
+    customerList.appendChild(firstname);
+    customerList.appendChild(lastname);
+    customerList.appendChild(street);
+    customerList.appendChild(city);
+    customerList.appendChild(state);
+    customerList.appendChild(phone);
+
+    buildCustomerView.appendChild(customerList);
+}
+
+const buildCustomerView = document.querySelector('#customersView');
+
+buildCustomerView.innerHTML = viewCustomers();
 
 
 //logout alert
