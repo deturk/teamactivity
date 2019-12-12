@@ -68,6 +68,7 @@ function renderUserInfo() {
 
 
 }
+item.style.display == 'none';
 
 // hide and show customer divs
 
@@ -112,18 +113,20 @@ function addCustomerOptions(doc) {
 }
 
 
-// viewCustomer.addEventListener('touchend', gotData(data));
+addOption.textContent = 'Add';
+viewOption.textContent = 'View';
 
+options.classList.add('divOptions');
+addOption.classList.add('addCustomer');
+viewOption.classList.add('viewCustomer');
 
-function getCustomerData() {
-    dbase.collection('customers').get()
-        .then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                addCustomerOptions(doc);
-            });
+//options.setAttribute('data-id', doc.id);
+options.appendChild(addOption);
+options.appendChild(viewOption);
 
-        });
+customerInfo.appendChild(options);
 }
+options.style.display == 'none';
 
 //listen to click event on user details.
 userAccount.addEventListener('touchend', (e) => {
@@ -137,90 +140,52 @@ userAccount.addEventListener('touchend', (e) => {
     renderUserInfo();
 });
 
+let customerList = document.createElement('ul');
+async function viewCustomers(doc) {
 
+    let firstname = document.createElement('div');
+    let lastname = document.createElement('div');
+    let street = document.createElement('div');
+    let city = document.createElement('div');
+    let state = document.createElement('div');
+    let phone = document.createElement('div');
+    customerList.classList.add('customer-list');
+
+    customerList.setAttribute('data-id', doc.id);
+    firstname.textContent = doc.data().firstname;
+    lastname.textContent = doc.data().lastname;
+    street.textContent = doc.data().street;
+    city.textContent = doc.data().city;
+    state.textContent = doc.data().state;
+    phone.textContent = doc.data().phone;
+
+
+    customerList.appendChild(firstname);
+    customerList.appendChild(lastname);
+    customerList.appendChild(street);
+    customerList.appendChild(city);
+    customerList.appendChild(state);
+    customerList.appendChild(phone);
+
+    customerInfo.appendChild(customerList);
+}
 
 //call function to get customer info on event
-const customerInfo = document.querySelector('.addCustomer');
+const customerInfo = document.querySelector('#customer');
 
-customerInfo.addEventListener('touchend', (e) => {
+customerInfo.addEventListener('click', (e) => {
     e.preventDefault();
     getCustomerData();
     addForm();
 });
 
 function addForm() {
-    document.body.innerHTML = `
-    <nav role="navigation">
-            <div id="menuToggle">
-                <!--
-                            A fake / hidden checkbox is used as click reciever,
-                            so you can use the :checked selector on it.
-                            -->
-                <input type="checkbox" />
+    let addForm = document.querySelector('#add-form');
+    addForm.addEventListener('click', (e) => {
+        document.getElementById('add-form').style.display = "block";
 
-                <!--
-                            Some spans to act as a hamburger.
-                            
-                            They are acting like a real hamburger,
-                            not that McDonalds stuff.
-                            -->
-                <span></span>
-                <span></span>
-                <span></span>
+    });
 
-                <!--
-                            Too bad the menu has to be inside of the button
-                            -->
-                            <ul id="menu">
-                            <a href="main.html">
-                                <li>Home</li>
-                            </a>
-                            <a href="#">
-                                <li>Account Details</li>
-                            </a>
-                            <a href="contactus.html">
-                                <li>Contact Us</li>
-                            </a>
-                            <a href="#">
-                                <li id="logout">Log Out</li>
-                            </a>
-                        </ul>
-            </div>
-        </nav>
-        <div id="contactForm" class="contactForm">
-        <div id="formHeader" class="formHeader">
-    <h2 id="message">Add New Customer</h2>
-    </div>
-
-<div id="formBody" class="formBody">
-    <form inctype=text/plain>
-    <div class="inputContainer">
-      <input type="text" id="firstname" name="firstname" placeholder="First Name">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="lastname" name="lastname" placeholder="Last Name">
-    </div>
-    <div class="inputContainer">    
-      <input type="text"  id="email" name="email" placeholder="Email">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="street" name="street" placeholder="Street Address">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="city" name="city" placeholder="City">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="state" name="state" placeholder="State">
-    </div>
-    <div class="inputContainer">
-       <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
-    </div>
-      <input type="submit" class="submitBtn" id="addNewCustomer" value="Add Customer">
-      <br><br>
-    </form>
-    </div>
-    </div>
-    `;
 
 }
 
@@ -297,7 +262,7 @@ buildCustomerView.innerHTML = viewCustomers();
 
 //logout alert
 const logout = document.querySelector('#logout');
-logout.addEventListener('touchend', (e) => {
+logout.addEventListener('click', (e) => {
     e.preventDefault();
     auth.signOut().then(() => {
         console.log('user signed out');
