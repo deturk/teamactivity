@@ -83,30 +83,45 @@ function renderUserInfo() {
 //get customer information
 //let customerList = null;
 
-//function to display customer options
-let options = document.createElement('ul');
-let addOption = document.createElement('div');
-let viewOption = document.createElement('div');
+// function to display customer options
+// let options = document.createElement('ul');
+// let addOption = document.createElement('div');
+// let viewOption = document.createElement('div');
 
-function addCustomerOptions(doc) {
+// function addCustomerOptions(doc) {
 
-    addOption.textContent = 'Add';
-    viewOption.textContent = 'View';
+//     // addOption.textContent = 'Add';
+//     // viewOption.textContent = 'View';
 
-    options.classList.add('divOptions');
-    addOption.classList.add('addCustomer');
-    viewOption.classList.add('viewCustomer');
+//     // options.classList.add('divOptions');
+//     // addOption.classList.add('addCustomer');
+//     // viewOption.classList.add('viewCustomer');
 
-    //options.setAttribute('data-id', doc.id);
-    options.appendChild(addOption);
-    options.appendChild(viewOption);
+//     options.setAttribute('data-id', doc.id);
+//     // options.appendChild(addOption);
+//     // options.appendChild(viewOption);
 
-    customerInfo.appendChild(options);
-}
+//     customerInfo.appendChild(options);
+// }
 
 
+//get customer information
+const viewCustomer = document.querySelector('.view');
+// let ref = dbase.collection('customers');
+// ref.on('value', errData, gotData);
 
-//const viewCustomer = document.querySelector('.view');
+// function gotData(data) {
+//     let names = data.val();
+//     let keys = Object.keys(names);
+//     console.log(keys);
+// }
+
+// function errData(err) {
+//     console.log('Error!');
+//     console.log('err');
+// }
+
+// viewCustomer.addEventListener('touchend', gotData(data));
 
 
 function getCustomerData() {
@@ -119,7 +134,7 @@ function getCustomerData() {
         });
 }
 
-
+// viewCustomer.addEventListener('touchend', getCustomerData);
 
 //listen to click event on user details.
 userAccount.addEventListener('touchend', (e) => {
@@ -130,27 +145,27 @@ userAccount.addEventListener('touchend', (e) => {
     } else {
         item.style.display = "none";
     }
-    //renderUserInfo();
+    // renderUserInfo();
 });
 
 
 
 //call function to get customer info on event
-const customerInfo = document.querySelector('#customer');
+const customerInfo = document.querySelector('.addCustomer');
 
 customerInfo.addEventListener('touchend', (e) => {
     e.preventDefault();
     getCustomerData();
-    if (options.style.display === "none") {
-        options.style.display = "block";
-    } else {
-        options.style.display = "none";
-    }
-    if (e.target.innerHTML === 'Add') {
-        addForm();
-    } else {
-        console.log('expecting view customers');
-    }
+    // if (options.style.display === "none") {
+    //     options.style.display = "block";
+    // } else {
+    //     options.style.display = "none";
+    // }
+    // if (e.target.innerHTML === 'Add') {
+    addForm();
+    // } else {
+    //     console.log('expecting view customers');
+    // }
 });
 
 function addForm() {
@@ -185,9 +200,6 @@ function addForm() {
                             </a>
                             <a href="contactus.html">
                                 <li>Contact Us</li>
-                            </a>
-                            <a href="#customer">
-                                <li>Customer</li>
                             </a>
                             <a href="#">
                                 <li id="logout">Log Out</li>

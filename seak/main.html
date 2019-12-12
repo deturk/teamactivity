@@ -5,75 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 charset=UTF-8">
     <title>Home</title>
     <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 
 <body>
-    <div class="main">
-        <nav role="navigation">
-            <div id="menuToggle">
-                <!--
+    <div class="main"></div>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <!--
                             A fake / hidden checkbox is used as click reciever,
                             so you can use the :checked selector on it.
                             -->
-                <input type="checkbox" />
+            <input type="checkbox" />
 
-                <!--
+            <!--
                             Some spans to act as a hamburger.
                             
                             They are acting like a real hamburger,
                             not that McDonalds stuff.
                             -->
-                <span></span>
-                <span></span>
-                <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
 
-                <!--
+            <!--
                             Too bad the menu has to be inside of the button
                             -->
-                <ul id="menu">
-                    <a href="#">
-                        <li id="accountDetails">Account Details</li>
-                    </a>
-                    <a href="#customer">
-                        <li id="customer">Customer</li>
-                    </a>
-                    <a href="contactus.html">
-                        <li>Contact Us</li>
-                    </a>
-                    <a href="#">
-                        <li id="logout">Log Out</li>
-                    </a>
-                </ul>
-            </div>
-        </nav>
-        <div class="container">
-            <img src="../seak/seak-images/mainpic2.jpg" height="128" width="196">
+            <ul id="menu">
+                <a href="#">
+                    <li id="accountDetails">Account Details</li>
+                </a>
+                <!-- <a href="#customer">
+                    <li id="customer">Customer</li>
+                </a> -->
+                <a href="contactus.html">
+                    <li>Contact Us</li>
+                </a>
+                <a href="#">
+                    <li id="logout">Log Out</li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+
+    </div>
+    <div id="contactForm" class="contactForm">
+        <div id="formHeader" class="formHeader">
+            <h1 id="message">SEAK CRM</h1>
         </div>
     </div>
-
-
-
-
-
-    <div class="header">
-        <div class="container">
-
-            <a class="btn" href="#"></a>
-        </div>
-    </div>
-
-
-
-
 
     <div class="jumbotron">
         <div class="container">
-            <h2>Stay Connected</h2>
-            <p>The web app is to provide a simple customer management application to help businesses maintain better relationship with clients, get an overview of leads, and sales pipeline .
+            <div>
+                <h2>Manage Customers</h2>
+            </div>
+
+            <p>Have all your customer information in one place
             </p>
-            <p>An introductory homepage that includes purpose of the application and provides options to sign up or login. </p>
         </div>
+        <div class="btn-toolbar">
+            <button class="btn addCustomer" id="addBtn"><i class="fa fa-user"></i>Add Customer</button>
+            <button class="btn view" id="viewBtn"><i class="fa fa-users"></i>View Customers</button>
+        </div>
+
         <div class="footer">
             <div class="container">
                 <p>&copy; SEAK</p>

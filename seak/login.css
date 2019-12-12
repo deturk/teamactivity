@@ -26,7 +26,8 @@ body {
 
 a {
     color: inherit;
-    text-decoration: none
+    text-decoration: none;
+    font-size: 3rem;
 }
 
 .login-wrap {
@@ -73,7 +74,7 @@ a {
 }
 
 .login-html .tab {
-    font-size: 22px;
+    font-size: 3rem;
     margin-right: 15px;
     padding-bottom: 5px;
     margin: 0 15px 10px 0;
@@ -102,8 +103,10 @@ a {
 .login-form .group .input,
 .login-form .group .button {
     width: 100%;
+    height: 8rem;
     color: #fff;
     display: block;
+    font-size: 3rem;
 }
 
 .login-form .group .input,
@@ -121,11 +124,14 @@ a {
 
 .login-form .group .label {
     color: #aaa;
-    font-size: 12px;
+    font-size: 4rem;
+    margin-top: 14%;
+    margin-bottom: -10%;
 }
 
 .login-form .group .button {
     background: #1161ee;
+    font-size: 3rem;
 }
 
 .login-form .group label .icon {
@@ -162,10 +168,14 @@ a {
 
 .login-form .group .check:checked+label {
     color: #fff;
+    font-size: 3rem;
 }
 
 .login-form .group .check:checked+label .icon {
     background: #1161ee;
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
 }
 
 .login-form .group .check:checked+label .icon:before {
@@ -193,8 +203,11 @@ a {
 .foot-lnk {
     text-align: center;
     margin-bottom: 10px;
+    font-size: 3rem;
 }
 
 .new-user {
     text-align: center;
+    font-size: 3rem;
+    margin-top: 60px;
 }

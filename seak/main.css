@@ -195,11 +195,14 @@ a:hover {
 
 .btn {
   color: #fff;
-  background: #000;
+  background: #0a8754;
   padding: 10px 40px;
   text-decoration: none;
   -webkit-transition: background .5s;
   transition: background .5s;
+  width: 200px;
+  display: -ms-inline-grid;
+  display: inline-grid;
 }
 
 .main .container {
@@ -215,26 +218,30 @@ a:hover {
   background-color: #117bff;
   background-size: cover;
   height: 600px;
+  margin-top: -25px;
 }
 
 .jumbotron .container {
   position: relative;
-  top: 220px;
+  top: 60px;
 }
 
 .jumbotron h2 {
   color: #fff;
-  text-align: right;
+  text-align: center;
 }
 
 .jumbotron p {
   color: #fff;
-  text-align: right;
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 1.3rem;
 }
 
 .jumbotron .btn {
-  margin: 10px 0 0;
-  float: right;
+  margin: 50px 0 0;
+  margin-left: 60px;
+  font-size: 15px;
 }
 
 .footer {
@@ -267,7 +274,6 @@ a:hover {
 /*PEN STYLES*/
 body {
   background: #f1f1f1;
-  margin-top: 2rem;
 }
 
 .contactForm {
