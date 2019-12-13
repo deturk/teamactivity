@@ -185,7 +185,7 @@ form.addEventListener('submit', (e) => {
         firstname: form.firstname.value,
         lastname: form.lastname.value,
         email: form.email.value,
-        street: form.street.value,
+        street: form.streetaddress.value,
         state: form.state.value,
         phone: form.phone.value
     });
