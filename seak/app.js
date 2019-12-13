@@ -3,6 +3,9 @@ import { auth, dbase } from './firebase.js';
 
 const userAccount = document.querySelector('#accountDetails');
 
+const form = document.querySelector('#addCustomerForm');
+const buildCustomerView = document.querySelector('#customersView');
+
 
 //create a function to get user info
 let userData = null;
@@ -25,7 +28,7 @@ dbase.collection('customers')
     .get()
     .then((snapshot) => {
         snapshot.docs.forEach(doc => {
-            // viewCustomers(doc.data());
+            viewCustomers(doc);
             console.log(doc.data());
         });
     });
@@ -82,130 +85,67 @@ userAccount.addEventListener('touchend', (e) => {
 });
 
 
-function getCustomerData() {
-    dbase.collection('customers').get()
-        .then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                addCustomerOptions(doc);
-            });
+// function getCustomerData() {
+//     dbase.collection('customers').get()
+//         .then((snapshot) => {
+//             snapshot.docs.forEach(doc => {
+//                 addCustomerOptions(doc);
+//             });
 
-        });
-}
+//         });
+// }
 
 //call function to get customer info on event
 const customerInfo = document.querySelector('.addCustomer');
+const mainPage = document.querySelector('.jumbotron');
+const hideHeader = document.querySelector('.hideAdd');
 
 customerInfo.addEventListener('touchend', (e) => {
     e.preventDefault();
-    getCustomerData();
-    addForm();
+    // getCustomerData();
+    showCustomerForm();
 });
 
-function addForm() {
-    document.body.innerHTML = `
-    <nav role="navigation">
-            <div id="menuToggle">
-                <!--
-                            A fake / hidden checkbox is used as click reciever,
-                            so you can use the :checked selector on it.
-                            -->
-                <input type="checkbox" />
-                <!--
-                            Some spans to act as a hamburger.
-                            
-                            They are acting like a real hamburger,
-                            not that McDonalds stuff.
-                            -->
-                <span></span>
-                <span></span>
-                <span></span>
-                <!--
-                            Too bad the menu has to be inside of the button
-                            -->
-                            <ul id="menu">
-                            <a href="main.html">
-                                <li>Home</li>
-                            </a>
-                            <a href="#">
-                                <li>Account Details</li>
-                            </a>
-                            <a href="contactus.html">
-                                <li>Contact Us</li>
-                            </a>
-                            <a href="#">
-                                <li id="logout">Log Out</li>
-                            </a>
-                        </ul>
-            </div>
-        </nav>
-        <div id="contactForm" class="contactForm">
-        <div id="formHeader" class="formHeader">
-    <h2 id="message">Add New Customer</h2>
-    </div>
-<div id="formBody" class="formBody">
-    <form inctype=text/plain>
-    <div class="inputContainer">
-      <input type="text" id="firstname" name="firstname" placeholder="First Name">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="lastname" name="lastname" placeholder="Last Name">
-    </div>
-    <div class="inputContainer">    
-      <input type="text"  id="email" name="email" placeholder="Email">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="street" name="street" placeholder="Street Address">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="city" name="city" placeholder="City">
-    </div>
-    <div class="inputContainer">
-      <input type="text"  id="state" name="state" placeholder="State">
-    </div>
-    <div class="inputContainer">
-       <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
-    </div>
-      <input type="submit" class="submitBtn" id="addNewCustomer" value="Add Customer">
-      <br><br>
-    </form>
-    </div>
-    </div>
-    `;
-
+function showCustomerForm() {
+    const customerForm = document.querySelector('.customerForm');
+    customerForm.style.display = 'block';
+    hideHeader.style.display = 'none';
+    mainPage.style.display = 'none';
 }
+
 
 //save form values to database
-function addCustomerForm() {
-    const addNewCustomer = document.querySelector('#addNewCustomer');
-    addNewCustomer.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        const firstname = document.getElementById('firstname').value;
-        const lastname = document.getElementById('lastname').value;
-        const email = document.getElementById('email').value;
-        const street = document.getElementById('street').value;
-        const city = document.getElementById('city').value;
-        const state = document.getElementById('state').value;
-        const phone = document.getElementById('phone').value;
-        // grab data from  the form and save to databse
-        dbase.collection('customers').add({
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            street: street,
-            city: city,
-            state: state,
-            phone: phone
-        });
-    });
-}
+// function addCustomerForm() {
+//     const addNewCustomer = document.querySelector('#addNewCustomer');
+//     addNewCustomer.addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         const firstname = document.getElementById('firstname').value;
+//         const lastname = document.getElementById('lastname').value;
+//         const email = document.getElementById('email').value;
+//         const street = document.getElementById('street').value;
+//         const city = document.getElementById('city').value;
+//         const state = document.getElementById('state').value;
+//         const phone = document.getElementById('phone').value;
+//         // grab data from  the form and save to databse
+//         dbase.collection('customers').add({
+//             firstname: firstname,
+//             lastname: lastname,
+//             email: email,
+//             street: street,
+//             city: city,
+//             state: state,
+//             phone: phone
+//         });
+//     });
+// }
 
 
 //get customer information
 
-let customerList = document.createElement('ul');
 //function to view customers
 function viewCustomers(doc) {
 
+    let customerList = document.createElement('ul');
     let firstname = document.createElement('div');
     let lastname = document.createElement('div');
     let street = document.createElement('div');
@@ -214,13 +154,15 @@ function viewCustomers(doc) {
     let phone = document.createElement('div');
     customerList.classList.add('customer-list');
 
+
     customerList.setAttribute('data-id', doc.id);
-    firstname.textContent = doc.data().firstname;
-    lastname.textContent = doc.data().lastname;
-    street.textContent = doc.data().street;
-    city.textContent = doc.data().city;
-    state.textContent = doc.data().state;
-    phone.textContent = doc.data().phone;
+    firstname.textContent = `First Name: ${doc.data().firstname}`;
+    lastname.textContent = `Last Name: ${doc.data().lastname}`;
+    street.textContent = `Street Address: ${doc.data().streetaddress}`;
+    city.textContent = `City: ${doc.data().city}`;
+    state.textContent = `State: ${doc.data().state}`;
+    phone.textContent = `Phone: ${doc.data().phone}`;
+
 
     customerList.appendChild(firstname);
     customerList.appendChild(lastname);
@@ -232,10 +174,23 @@ function viewCustomers(doc) {
     buildCustomerView.appendChild(customerList);
 }
 
-const buildCustomerView = document.querySelector('#customersView');
+// buildCustomerView.innerHTML = viewCustomers();
 
-buildCustomerView.innerHTML = viewCustomers();
 
+//Add Customer Form
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    dbase.collection('customers').add({
+        city: form.city.value,
+        firstname: form.firstname.value,
+        lastname: form.lastname.value,
+        email: form.email.value,
+        street: form.street.value,
+        state: form.state.value,
+        phone: form.phone.value
+    });
+    console.log('Here I am');
+});
 
 //logout alert
 const logout = document.querySelector('#logout');

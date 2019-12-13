@@ -468,4 +468,12 @@ body {
 .contactForm .inputContainer.error textarea {
   color: #FF5C5C;
 }
+
+.contactForm .customer-list {
+  border: 2px solid black;
+}
+
+.customerForm {
+  display: none;
+}
 /*# sourceMappingURL=main.css.map */

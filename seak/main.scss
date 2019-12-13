@@ -442,4 +442,11 @@ body {
             color: $error;
         }
     }
+    .customer-list {
+        border: 2px solid black;
+    }
+}
+
+.customerForm {
+    display: none;
 }

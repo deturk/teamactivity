@@ -34,12 +34,12 @@
                             Too bad the menu has to be inside of the button
                             -->
             <ul id="menu">
+                <a href="main.html">
+                    <li>Home</li>
+                </a>
                 <a href="#">
                     <li id="accountDetails">Account Details</li>
                 </a>
-                <!-- <a href="#customer">
-                    <li id="customer">Customer</li>
-                </a> -->
                 <a href="contactus.html">
                     <li>Contact Us</li>
                 </a>
@@ -63,31 +63,65 @@
                 <h2>Manage Customers</h2>
             </div>
             <div id="customersView">
-
             </div>
         </div>
         <div class="btn-toolbar">
             <button class="btn addCustomer" id="addBtn"><i class="fa fa-user"></i>Add Customer</button>
         </div>
+    </div>
 
-        <div class="footer">
-            <div class="container">
-                <p>&copy; SEAK</p>
+    <div class="customerForm">
+        <div id="contactForm" class="contactForm">
+            <div id="formHeader" class="formHeader hideAdd">
+                <h2 id="message">Add New Customer</h2>
+            </div>
+            <div id="formBody" class="formBody">
+                <form inctype=text/plain id="addCustomerForm">
+                    <div class="inputContainer">
+                        <input type="text" id="firstname" name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="street" name="street" placeholder="Street Address">
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="city" name="city" placeholder="City">
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="state" name="state" placeholder="State">
+                    </div>
+                    <div class="inputContainer">
+                        <input type="text" id="phone" name="phone" placeholder="(222)-222-2222">
+                    </div>
+                    <input type="submit" class="submitBtn" id="addNewCustomer" value="Add Customer">
+                    <br><br>
+                </form>
             </div>
         </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <p>&copy; SEAK</p>
+        </div>
+    </div>
 
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
 
-        <!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 
 
-        <script type="module" src="/seak/app.js"></script>
+    <script type="module" src="/seak/app.js"></script>
 
 </body>
 
